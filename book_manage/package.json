@@ -1,0 +1,15 @@
+{
+  "name": "webSampleTest",
+  "version": "0.1.0",
+  "scripts": {
+    "start": "DEBUG=*,-send,-connect:dispatcher ./node_modules/.bin/nodemon server.js"
+  },
+  "dependencies": {
+    "express": "<4.0.0",
+    "ejs": "latest",
+    "mongoose": "latest",
+    "debug": "0.8.0",
+    "nodemon": "latest",
+    "mysql":"latest"
+  }
+}

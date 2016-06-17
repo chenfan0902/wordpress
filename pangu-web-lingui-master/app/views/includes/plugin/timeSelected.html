@@ -1,0 +1,26 @@
+<div class="well form-horizontal">
+    <div class="control-group prov-select">
+        <span>限制时间范围:</span><select id="useflag" class="styled" style="width: 50px">
+        <option value="no">no</option>
+        <option value="yes">yes</option>
+    </select>
+        <span>开始:</span>
+        <select id="select1" class="styled" style="width: 60px"><%for(var i=0; i<24; i++){%>
+            <option value="opt<%=i%>"><%=i%></option><%}%>
+        </select>
+        <span>时</span>
+        <select id="select2" class="styled" style="width: 60px"><%for(var i=0; i<60; i++){%>
+            <option value="opt<%=i%>"><%=i%></option><%}%>
+        </select>
+        <span>分&nbsp,</span>
+        <span>结束:</span>
+        <select id="select3" class="styled" style="width: 60px"><%for(var i=0; i<24; i++){%>
+            <option value="opt<%=i%>"><%=i%></option><%}%>
+        </select>
+        <span>时</span>
+        <select id="select4" class="styled" style="width: 60px"><%for(var i=0; i<60; i++){%>
+            <option value="opt<%=i%>"><%=i%></option><%}%>
+        </select>
+        <span>分</span>
+    </div>
+</div>

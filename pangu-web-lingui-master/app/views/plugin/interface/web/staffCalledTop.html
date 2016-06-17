@@ -1,0 +1,23 @@
+<div class="widget navbar-tabs">
+	<div class="navbar">
+		<div class="navbar-inner">
+			<ul class="nav nav-tabs pull-right">
+				<li class="active" ><a href="#" data-toggle="tab">日</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="tabbable" >
+		<div class="tab-content" style="height: 450px">
+			<div class="tab-pane fade active in">
+				<div class="list">
+					<ol>
+						<% item.forEach(function(info){ %>
+						<li><%= info._id %><strong class="text-error pull-right"><%= info.CALLED %></strong></li>
+						<% }) %>
+					</ol>
+                    <a href="/initInterfaceOprStaffCalledDetail.html?chartList=<%= chartList %>&date=<%= date %>" data-pjax='#content' class="pull-right">更多</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

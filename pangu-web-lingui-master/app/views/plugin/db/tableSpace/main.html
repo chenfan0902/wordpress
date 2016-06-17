@@ -1,0 +1,27 @@
+<script type="text/javascript" src="/js/view/plugin/db/tableSpace/mainClt.js"></script>
+<!-- Content wrapper -->
+
+<div class="wrapper">
+
+
+    <h5 class="widget-name"></h5>
+
+    <input type="hidden" name="queryUrl" value="<%= queryUrl %>"/>
+
+    <div class="widget">
+
+        <div class="table-overflow">
+            <table class="table table-striped table-bordered table-hover" id="data-table">
+                <thead>
+                <tr>
+                    <% titles.forEach(function(title){ %>
+                    <th><%= title %></th>
+                    <% }) %>
+                </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>
+    </div>

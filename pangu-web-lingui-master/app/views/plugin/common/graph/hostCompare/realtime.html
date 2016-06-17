@@ -1,0 +1,49 @@
+<script type="text/javascript" src="/js/view/plugin/common/graph/hostCompare/realtimeClt.js"></script>
+
+	    <div class="wrapper">
+            <!-- Content head -->
+		        <% include ../../includes/contentHead.html %>	
+		    <!-- /Content head -->
+	    </div>
+
+    <div class="widget">
+      	<div class="navbar">
+          	<div class="navbar-inner">
+              	<h6>实时对比曲线图</h6>
+              </div>
+          </div>
+          <div class="well body">
+            
+            <div class="row-fluid">
+    		        <% var index = 0  %>
+    		        <% listIndex.forEach(function(item){       
+    		           if(index%2 ==0){
+    		        %>
+        					  <div class="span6">
+            						<div class="widget">
+                            	<div class="navbar"><div class="navbar-inner"><h6><%= item[0].hostName %></h6></div></div>
+                            	<div class="well body">         
+                                		<div class="graph-standard" id="compGraph<%= index %>"></div>
+                            	</div>
+                        </div>
+        			  <% }else{ %> 
+        			         <div class="widget">
+                            	<div class="navbar"><div class="navbar-inner"><h6><%= item[0].hostName %></h6></div></div>
+                            	<div class="well body">         
+                                		<div class="graph-standard" id="compGraph<%= index %>"></div>
+                         	    </div>
+                        </div>
+                    </div>
+        			  <% } 
+        			  index++ %>  
+    			      <% }) %>
+    			  </div>
+    			  
+            <div  id="label"></div>
+          	<div style="display:none" id="chart-list"><%= chartList %></div>
+          	<div style="display:none" id="chart-listCnt"><%= listCnt %></div>
+          </div>
+      </div>
+      <!-- /updating chart -->
+    
+    </div>

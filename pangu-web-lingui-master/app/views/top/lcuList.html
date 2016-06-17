@@ -1,0 +1,44 @@
+
+		    <!-- Content wrapper -->
+		    <div class="wrapper">
+
+			    <!-- Content head -->
+			        <% include ../includes/contentHead.html %>	
+			    <!-- /Content head -->
+
+			    
+		    
+               <h5 class="widget-name" ><strong>流程统计</strong></h5>
+
+				<div class="row-fluid">
+
+					<div class="span6">
+
+						<% var tabIdx = 0, mode='TuxState' %>
+						<% var item = all['TuxStateTimeOutTop'], type='TimeOutTop',subtype='' %>
+						<% include ../includes/widget/top.html %>		
+						
+						<% var item = all['TuxStateCalledSumByLcu'], type='CalledSumByLcu',subtype='' %>
+						<% include ../includes/widget/top.html %>	
+						
+					</div>
+
+
+					<div class="span6">
+					    
+					    
+					    <% var item = all['TuxStateFailedSumByLcu'], type='FailedSumByLcu',subtype='' %>
+						<% include ../includes/widget/top.html %>
+								
+                        <% var item = all['TuxStateAllTimeByLcu'], type='AllTime',subtype='ByLcu' %>
+						<% include ../includes/widget/top.html %>	
+						
+					</div>
+					
+
+				</div>
+				<!-- /排名 -->
+
+
+		    </div>
+		    <!-- /content wrapper -->

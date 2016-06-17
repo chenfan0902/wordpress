@@ -1,0 +1,62 @@
+
+
+<script>
+
+    function imgLoad(obj,maxWidth,maxHeight){
+        var ratio = 0;  // 缩放比例
+        var width = $(obj).width();    // 图片实际宽度
+        var height = $(obj).height();  // 图片实际高度     // 检查图片是否超宽
+         if(width > maxWidth){
+             ratio = maxWidth / width;   // 计算缩放比例
+             $(obj).css("width", maxWidth); // 设定实际显示宽度
+             height = height * ratio;    // 计算等比例缩放后的高度
+             $(obj).css("height", height);  // 设定等比例缩放后的高度
+         }     // 检查图片是否超高
+         else{
+             ratio = width / maxWidth;
+             $(obj).css("width", maxWidth);   // 设定实际显示高度
+             height = height * ratio;    // 计算等比例缩放后的高度
+             $(obj).css("height", height);    // 设定等比例缩放后的高度
+         }
+      }
+
+</script>
+
+<!-- Fixed top -->
+	<div id="top">
+		<div class="fixed">
+			<a href="/index.html" title="" class="logo"><img src="/img/logo.png" alt="" /></a>
+			<ul class="top-menu">
+				<li><p style="margin: 10px 10px 0px 10px;color:#F8F4E1; height:23px;width: 80px; font-weight:bold; top: 10px">选中的时间：</p></li>
+				<li><p id="date-txt" style="margin: 10px;color:#F8F4E1; height:23px;width: 80px; font-weight:bold; top: 10px">
+				<%if (typeof value !== 'undefined') {%>
+					<%= value %>
+				<%} else if (typeof date !== 'undefined') {%>
+					<%=date%>
+				<%} else {%>
+					---
+				<%}%></p>
+				<li><a class="fullview"></a></li>
+				<li><a class="showmenu"></a></li>
+				<li><a href="#" title="" class="messages"><i class="new-message"></i></a></li>
+				<li class="dropdown">
+					<a class="user-menu" data-toggle="dropdown"><img src="/getHeadPicture"    height="22" width="22"/><span>您好, <% if(locals.current_user){ %> <%= locals.current_user.nick_name %> ！ <% } %> <b class="caret"></b></span></a>
+					<ul class="dropdown-menu">
+						<!--<li><a href="#" title=""><i class="icon-user"></i>个人资料</a></li> -->
+						<!--<li><a href="#" title=""><i class="icon-inbox"></i>消息<span class="badge badge-info">9</span></a></li> -->
+						<li><a href="/editUser" title=""><i class="icon-cog"></i>个人资料</a></li>
+						<% if(locals.current_user){ %>
+						    <% if(locals.current_user.is_admin){ %>
+							    <li><a href="/auditUser" title=""><i class="icon-cog"></i>审核</a></li>
+							     <li><a href="/assignMenus" title=""><i class="icon-cog"></i>菜单分配</a></li>
+							    <li><a href="/resetPassword.html" title=""><i class="icon-cog"></i>密码重置</a></li>
+					    	<% } %>
+				        <% } %>
+				        <li><a href="/modifyPassword.html" title=""><i class="icon-cog"></i>密码修改</a></li>
+						<li><a  id="logout" href="/logout" title=""><i class="icon-remove"></i>退出</a></li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<!-- /fixed top -->

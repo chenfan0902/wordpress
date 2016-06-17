@@ -1,0 +1,26 @@
+
+
+
+          <form  class="form-horizontal" action="#">
+            <fieldset>
+
+	                    <!-- Form validation -->
+	             <div class="widget">
+                   <div class="row-fluid well">
+    
+                          <div class="control-group">
+                              <label class="control-label">选择指标: <span class="text-error">*</span></label>
+                              <select class="required" data-prompt-position="topLeft:-1,-5"  onchange="var data=JSON.parse(this.options[this.selectedIndex].getAttribute('StepAllValue'));data['targetValue']=this.value;$('#stepAllData').val(JSON.stringify(data))">
+                                  <option value="">请选择</option>
+                                  <% for(var indexTr=0;indexTr<configZhiBiaoList.length;indexTr++){ %>
+                                      <option value="<%= configZhiBiaoList[indexTr].value %>" StepAllValue="<%= stepAllData %>" ><%= configZhiBiaoList[indexTr].name %></option>
+                                  <% } %>          
+                              </select>
+                          </div>            
+                   </div>
+               </div>
+            </fieldset>
+              
+          </form>
+      <!-- /updating chart -->
+

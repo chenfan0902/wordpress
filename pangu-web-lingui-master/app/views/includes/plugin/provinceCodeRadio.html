@@ -1,0 +1,43 @@
+<div class="well form-horizontal"><%if(user.is_admin || user.provinceCode === '*'){%><%for(var i=0;i<provinceCode.length;i++){%><%if(i%6==0){%>
+    <div class="control-group prov-select">
+        <label class="radio span2">
+            <input type="radio" name="provinceSelect" id="provinceSelect<%=i+1%>" value="<%=provinceCode[i][0]%>" checked="">
+            <%=provinceCode[i][1]%>&nbsp;&nbsp;(&nbsp;<%=provinceCode[i][0]%>&nbsp;)
+        </label><%if(i+1 < provinceCode.length){%>
+        <label class="radio span2">
+            <input type="radio" name="provinceSelect" id="provinceSelect<%=i+2%>" value="<%=provinceCode[i+1][0]%>" checked="">
+            <%=provinceCode[i+1][1]%>&nbsp;&nbsp;(&nbsp;<%=provinceCode[i+1][0]%>&nbsp;)
+        </label><%}%><%if(i+2 < provinceCode.length){%>
+        <label class="radio span2">
+            <input type="radio" name="provinceSelect" id="provinceSelect<%=i+3%>" value="<%=provinceCode[i+2][0]%>" checked="">
+            <%=provinceCode[i+2][1]%>&nbsp;&nbsp;(&nbsp;<%=provinceCode[i+2][0]%>&nbsp;)
+        </label><%}%><%if(i+3 < provinceCode.length){%>
+        <label class="radio span2">
+            <input type="radio" name="provinceSelect" id="provinceSelect<%=i+4%>" value="<%=provinceCode[i+3][0]%>" checked="">
+            <%=provinceCode[i+3][1]%>&nbsp;&nbsp;(&nbsp;<%=provinceCode[i+3][0]%>&nbsp;)
+        </label><%}%><%if(i+4 < provinceCode.length){%>
+        <label class="radio span2">
+            <input type="radio" name="provinceSelect" id="provinceSelect<%=i+5%>" value="<%=provinceCode[i+4][0]%>" checked="">
+            <%=provinceCode[i+4][1]%>&nbsp;&nbsp;(&nbsp;<%=provinceCode[i+4][0]%>&nbsp;)
+        </label><%}%><%if(i+5 < provinceCode.length){%>
+        <label class="radio span2">
+            <input type="radio" name="provinceSelect" id="provinceSelect<%=i+6%>" value="<%=provinceCode[i+5][0]%>" checked="">
+            <%=provinceCode[i+5][1]%>&nbsp;&nbsp;(&nbsp;<%=provinceCode[i+5][0]%>&nbsp;)
+        </label><%}%>
+    </div><%}%><%}%><%}else if(user.provinceCode !== undefined){%>
+    <div class="control-group prov-select">
+        <label class="radio span2">
+            <input type="radio" name="provinceSelect" id="provinceSelect<%=user.provinceCode%>" value="<%=user.provinceCode%>" checked="">
+            <%=province[user.provinceCode]%>&nbsp;&nbsp;(&nbsp;<%=user.provinceCode%>&nbsp;)
+        </label>
+        <label class="radio span2">
+            <input type="radio" name="provinceSelect" id="provinceSelect99" value="99">
+            cBss%>&nbsp;&nbsp;(&nbsp;99&nbsp;)
+        </label>
+    </div><%}else{%><div class="control-group prov-select">
+        <label class="radio span12">
+            <input type="radio" name="provinceSelect" id="noProvinceCode" value="---" checked="">
+            无省份标识，请在个人资料中修改！
+        </label>
+    </div><%}%>
+</div>

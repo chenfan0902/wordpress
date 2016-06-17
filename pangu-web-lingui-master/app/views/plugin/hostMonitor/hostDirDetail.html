@@ -1,0 +1,82 @@
+<link href="/css/jquery-ui-1.8.2.custom.css" rel="stylesheet" type="text/css"/>
+
+
+<div class="wrapper">
+    <!-- Content head -->
+    <% include ../../includes/contentHead.html %>
+    <!-- /Content head -->
+</div>
+
+<script type="text/javascript" src="/js/view/plugin/hostMonitor/hostDirDetailCtl.js"></script>
+<style>
+    .title-ul {
+        margin: 10px 10px 15px 0px
+    }
+
+    .title-ul li{
+        display: inline-block;
+        width: 100%;
+        font-size: 14px;
+    }
+    .title-ul i{
+        font-size: 1.2em;
+    }
+</style>
+<!-- Content wrapper -->
+<div class="wrapper">
+
+    <h5>主机:<%=host%></h5>
+    <h5 class="widget-name"></h5>
+
+    <input id="date" type="hidden" value="<%= date %>"/>
+    <input id="chartList" type="hidden" value="<%= chartList %>"/>
+    <input id="module" type="hidden" value="<%= module %>"/>
+    <input id="host" type="hidden" value="<%= host%>" />
+    <input id="dir" type="hidden" value="<%= dir%>" />
+
+    <div class="row-fluid" style="margin-top: 5px; background-color: #ffffff">
+
+        <div class="span4">
+
+            <div class="widget" style="background-color: #fafafa;margin-left: 5px; margin-bottom: 10px">
+                <ul class="clearfix title-ul">
+                    <li class=""><i class="icon-calendar"></i>目录使用情况</li>
+                </ul>
+                <div class="progress progress-striped progress-success active" style="height: 35px; margin: 10px 10px 10px 10px">
+                    <div id="bar" class="bar" style="background-color: #5faee3 "></div>
+                </div>
+                <div style="text-align: center; margin-bottom: 8px;">
+                    <span style="color: #7f7f7f">占用比:<span id="diskContent" style="color: #7f7f7f"></span></span>
+                </div>
+            </div>
+
+            <div class="widget" style="background-color: #fafafa; margin-left: 5px;">
+                <ul class="clearfix title-ul" >
+                    <li class=""><i class="icon-calendar"></i>饼状图</li>
+                </ul>
+                <div id="dirPie" style="width: 100%; height:380px">
+                </div>
+            </div>
+
+        </div>
+
+        <div class="span8">
+            <div class="widget" style="background-color: #fafafa; margin: 5px 5px 10px 10px">
+                <ul class="clearfix title-ul" >
+                    <li class=""><i class="icon-calendar"></i>大文件TOP10</li>
+                </ul>
+                <div class="widget">
+                    <table id="topsTbl" class="table table-striped table-bordered table-checks media-table"
+                           style="width: 95%; margin: 0 10px 0 20px;">
+                        <thead></thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+<!-- /content wrapper -->
+

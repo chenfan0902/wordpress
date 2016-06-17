@@ -1,0 +1,85 @@
+﻿  <script type="text/javascript" src="/js/view/plugin/tuxedo/lcu/calledSum/bar.js"></script>
+	<script type="text/javascript" src="/js/plugins/charts/jquery.flot.orderBars.js"></script>
+
+
+
+		    <!-- Content wrapper -->
+		    <div class="wrapper">
+			     <!-- Content head -->
+			        <% include ../../../../includes/contentHead.html %>
+			    <!-- /Content head -->
+			    
+			    
+            <div class="widget-title">
+		         <h5 class="widget-name"><i class="icon-align-justify"></i>排名</h5>
+		    </div>
+		    <div style="display:none" id="chart-list"><%= chartList %></div>
+		    <div style="display:none" id="value"><%= caculateDate %></div>
+
+		         <div class="row-fluid">
+			        <% for(var allItem in all){ 
+			             var item = all[allItem],
+			             mode=all[allItem].mode, type=all[allItem].type,subtype=all[allItem].subtype;
+			        %>
+			         
+			             <% if(all[allItem].displayType == 'top'){ %>
+			                  <div class="span6">    		
+                						&nbsp;
+                						&nbsp;
+                						<% include ./top.html %>					
+                						&nbsp;
+        			          </div> 
+        			       
+			             
+			             <% } %>
+			        <% } %>
+			       </div>
+			       
+			      <div class="widget-title">
+		               <h5 class="widget-name"><i class="icon-bar-chart"></i>柱状图</h5>
+		          </div>
+			       
+			       <form action="#" class="form-horizontal">
+                     <fieldset>
+                            <div class="row-fluid">
+                              
+                              <div class="span6">
+                                <label class="control-label">流程(服务)名：</label>
+                                  <select id="transcodeValue">
+                                      <option value="">所有</option>
+                                      <% for(var indexTr=0;indexTr<transcode_list.length;indexTr++){ %>
+                                        <option value="<%= transcode_list[indexTr] %>"><%= transcode_list[indexTr] %></option>
+                                      <% } %> 
+                                  </select>
+                              </div>
+                             
+                             </div>
+                      
+                      </fieldset>
+                 </form>  
+        			 
+        		<div class="row-fluid">       
+    			        <% var barIndex = 0 ;
+    			           for(var allItem in all){ 
+    			             var item = all[allItem],
+    			             mode=all[allItem].mode, type=all[allItem].type,subtype=all[allItem].subtype;
+    			        %>
+    			          <%           
+        		           if(all[allItem].displayType == 'bar'){
+        		           
+        		          %>
+        		             
+            		             <div class="span6"> 
+                		           <% include ./chart-cloumn.html %>	
+                						    &nbsp;
+            					  </div> 
+    			             
+    			        <% if(item.scopes[0] == 'day'){barIndex++;}
+					if(item.scopes[0] == 'month'){barIndex+=10;}
+					if(item.scopes[0] == 'year'){barIndex+=100;}} %>
+    			      <% }  %>
+    			      <div  style="display:none" id="barIndex" ><%= barIndex %></div>
+			    </div>
+			  
+	</div>
+		    <!-- /content wrapper -->

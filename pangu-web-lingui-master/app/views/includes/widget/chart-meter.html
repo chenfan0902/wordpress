@@ -1,0 +1,9 @@
+<div class="widget">
+	<div class="navbar"><div class="navbar-inner"><h6><%= item.name %>(<%= item.scopeNames[item.scopes[0]] %>)</h6></div></div>
+	<div class="well body" id ='wellDiv'>
+
+		<div class="graph-standard"  id="meterChart-<%= ++meterChartIdx %>"></div>
+		<div style="display:none" id="meterChart-data<%= meterChartIdx %>"><%= JSON.stringify(item) %></div>
+	</div>
+</div>
+

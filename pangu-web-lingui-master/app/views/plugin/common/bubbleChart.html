@@ -1,0 +1,46 @@
+<script type="text/javascript" src="/js/files/highcharts.js"></script>
+<script type="text/javascript" src="/js/files/highcharts-more.js"></script>
+<script type="text/javascript" src="/js/view/plugin/common/bubbleChartClt.js"></script>
+
+<div class="wrapper">
+    <!-- Content head -->
+    <% include ../../includes/contentHead.html %>
+    <!-- /Content head -->
+</div>
+
+<input type="hidden" id="bubbleData" value="<%= retSet %>">
+<input type="hidden" id="bubbleTitle" value="<%= title %>">
+<input type="hidden" id="chartList" value="<%= chartList %>">
+
+<div class="navbar">
+    <div class="navbar-inner">
+        <h6 class=""><i class="icon-align-justify"></i><%= title %></h6>
+        <ul class="navbar-icons" style="margin-top: 8px">
+            <li><a class="tip" title="流程(服务)名：">
+                <select id="lsc_key" style="vertical-align: bottom; height: 2em; margin-top: -1em;">
+                    <option value="">请选择</option>
+                    <% for(var i=0;i<codeList.length;i++){ %>
+                        <option value="<%= codeList[i] %>"><%= codeList[i] %></option>
+                    <% } %>
+                </select>
+            </a></li>
+        </ul>
+        <ul class="navbar-icons" style="margin-top: 8px">
+            <li><a class="tip" title="选择显示主机地址">
+                <select id="lsc_host" style="vertical-align: bottom; height: 2em; margin-top: -1em;">
+                    <% for (var j = 0; j < host.length; j++) { %>
+                    <%if(host[j].indexOf(':')!=-1){%> <option disabled><%= host[j] %></option><%}else{%>
+                    <option  value="<%= host[j] %>"><%= host[j] %></option><%}%><% } %>
+                </select>
+            </a></li>
+        </ul>
+    </div>
+</div>
+
+<div class="widget">
+    <div class="well body">    
+        <div class="row-fluid">
+            <div id="container1" style="width: 100%; height:100%"></div>
+        </div>
+    </div>
+</div>

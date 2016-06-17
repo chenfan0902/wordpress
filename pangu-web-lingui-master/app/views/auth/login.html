@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+<title><% include ../includes/title.html %></title>
+<link href="/css/main.css" rel="stylesheet" type="text/css" />
+<!--[if IE 8]><link href="/css/ie8.css" rel="stylesheet" type="text/css" /><![endif]-->
+<!--[if IE 9]><link href="/css/ie9.css" rel="stylesheet" type="text/css" /><![endif]-->
+
+<script type="text/javascript" src="/js/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="/js/jquery/jquery-ui.min.js"></script>
+<script type="text/javascript" src="/js/jquery/jquery.cookie.js"></script>
+
+<script type="text/javascript" src="/js/plugins/forms/jquery.uniform.min.js"></script>
+
+<script type="text/javascript" src="/js/files/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="/js/files/login.js"></script>
+<script type="text/javascript" src="/js/plugins/ui/jquery.bootbox.min.js"></script>
+
+
+</head>
+
+<body class="no-background">
+
+	<!-- Fixed top -->
+	<div id="top">
+		<div class="fixed">
+			<a href="/index.html" title="" class="logo" style="font-size: 24px;color:white"><img src="/img/logo.png" alt="" /></a>
+			<ul class="top-menu">
+				<li class="dropdown">
+					<a class="login-top" data-toggle="dropdown"></a>
+					<ul class="dropdown-menu pull-right">
+                        <li><a href="/register"><i class="icon-plus"></i>注册用户</a></li>
+                      <!--  <li><a href="/changepwd"><i class="icon-refresh"></i>修改密码</a></li>
+                        <li><a href="/settings"><i class="icon-cog"></i>设置</a></li> -->
+					</ul>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<!-- /fixed top -->
+
+
+    <!-- Login block -->
+    <div class="login">
+        <div class="navbar">
+            <div class="navbar-inner">
+                <h6><i class="icon-user"></i>登录信息</h6>
+                <div class="nav pull-right">
+                    <a href="#" class="dropdown-toggle navbar-icon" data-toggle="dropdown"><i class="icon-cog"></i></a>
+                    <ul class="dropdown-menu pull-right">
+                        <li><a href="/register"><i class="icon-plus"></i>注册用户</a></li>
+                       <!-- <li><a href="/changepwd"><i class="icon-refresh"></i>修改密码</a></li>
+                        <li><a href="/settings"><i class="icon-cog"></i>设置</a></li>  -->
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="well">
+            <form action="/auth.html" class="row-fluid" method="post">
+				<% errors.forEach(function(error){ %>
+					<div class="alert alert-error" style="margin-top: 16px;">
+						<button type="button" class="close" data-dismiss="alert">×</button>
+						<strong>错误!</strong> <%= error %>
+					</div>
+				<% }) %>
+				<input type="hidden" name="_csrf" value="<%= csrf_token %>"/>
+                <div class="control-group">
+                    <label class="control-label">用户名:</label>
+                    <div class="controls"><input class="span12" type="text" name="regular" value ="<%= user_name %>" placeholder="请输入用户名" /></div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label">密码:</label>
+                    <div class="controls"><input class="span12" type="password" name="pass" value ="<%= password %>" placeholder="请输入密码" /></div>
+                </div>
+
+                <div class="control-group">
+                    <div class="controls"><label class="checkbox inline"><input type="checkbox" id="ck_rmbUser" class="styled" value="" checked="checked">记住用户名</label></div>
+                </div>
+
+                <div class="login-btn"><input type="submit"  value="进 入"  class="btn btn-danger btn-block" /></div>
+            </form>
+        </div>
+    </div>
+<!--
+<div id="dialog-message">
+	<p class = "ico-warning-sign">
+	</p>
+	<p id ="errorBox">
+	  sdsdsds
+	</p>
+</div>
+
+-->
+    <!-- /login block -->
+
+
+	<!-- Footer -->
+	<div id="footer" class="fixed">
+		<div class="copyrights">&copy;  Asiainfo 2014.</div>
+		<ul class="footer-links">
+			<li><a href="#" title="0.1.0"><i class="icon-cogs"></i>Version: 0.1.0</a></li>
+			<li><a href="mailto:tangzhi@asiainfo-linkage.com?subject=关于LAP的Bug" title=""><i class="icon-screenshot"></i>反馈Bug</a></li>
+		</ul>
+	</div>
+	<!-- /footer -->
+
+</body>
+</html>

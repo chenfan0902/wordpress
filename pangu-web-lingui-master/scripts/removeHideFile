@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+##################### param #####################
+here=`pwd`
+workspace=${1-$here}
+
+##################### function ##################
+find $here -name "._*" -delete
+find $here -name ".DS_Store" -delete

@@ -1,0 +1,72 @@
+<script type="text/javascript" src="/js/view/plugin/db/conversation/historyClt.js"></script>
+
+<style>
+	#compGraph0,#compGraph1,#compGraph2,#compGraph3,#compGraph4,#compGraph5,#compGraph6{
+		height: 350px;
+	}
+</style>
+
+
+<div class="wrapper">
+	<!-- Content head -->
+	<% include ../../../includes/contentHead.html %>
+	<!-- /Content head -->
+</div>
+<div class="widget">
+	<div class="navbar">
+		<div class="navbar-inner">
+			<h6><%= moduleName %></h6>
+		</div>
+	</div>
+
+	<% if(isWhere == 'true'){ %>
+	<form action="#" class="form-horizontal">
+		<fieldset>
+			<div class="control-group">
+
+				<div class="span6">
+					<label class="control-label">��������</label>
+					<select id="transcodeValue" class="select">
+						<option value="">��������</option>
+						<% for(var indexTr=0;indexTr<coreTranscodeList.length;indexTr++){ %>
+						<option value="<%= coreTranscodeList[indexTr] %>"><%= coreTranscodeList[indexTr] %></option>
+						<% } %>
+					</select>
+				</div>
+			</div>
+
+		</fieldset>
+	</form>
+	<% }%>
+
+
+	<div class="well body">
+
+
+
+		<% var index = 0  %>
+		<% listIndex.forEach(function(item){
+		%>
+		<div class="row-fluid">
+			<div>
+				<div class="widget">
+					<div class="navbar"><div class="navbar-inner"><h6><%= item[0].hostName %></h6></div></div>
+					<div class="well body">
+						<div class="graph-standard" id="compGraph<%= index %>"></div>
+					</div>
+				</div>
+			</div>
+			<% index++ %>
+		</div>
+		<% }) %>
+
+
+
+		<div style="display:none" id="chart-list"><%= chartList %></div>
+		<div style="display:none" id="chart-listCnt"><%= listCnt %></div>
+		<input type="hidden" id="form-Tag" value="<%= isWhere %>">
+	</div>
+</div>
+<!-- /updating chart -->
+
+</div>

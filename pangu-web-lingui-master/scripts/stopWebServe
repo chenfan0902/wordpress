@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+##################### param #####################
+LOGIN=`whoami`
+port=$1
+
+##################### function ##################
+ps -elf|grep -v grep|grep $LOGIN|grep web_|grep node|grep $port|awk '{print "kill "$4}'|sh;
+ps -elf|grep -v grep|grep $LOGIN|grep web_|grep node|grep $port|wc -l;

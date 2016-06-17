@@ -1,0 +1,120 @@
+.full-content .flow-wrapper1{
+    background-image: url("/img/keystep/dashed-line.png");
+    margin-left: 28px;
+    padding-left: 18px;
+    background-size: cover;
+    background-position: 0px 67px;
+}
+.full-content .flow-wrapper {
+    margin-left: 160px;
+}
+
+.flow-wrapper{
+    margin: 0 0 0 0 ;
+    background-image: url("/img/keystep/dashed-line.png");
+    background-repeat:no-repeat;
+    background-position: -3px 80px;
+    margin-left: 38px;
+}
+
+.flow-wrapper1{
+    margin: 0 0 0 0 ;
+    background-image: url("/img/keystep/dashed-line1.png");
+    background-repeat:no-repeat;
+    background-position: 17px 80px;
+    margin-left: 38px;
+}
+
+.full-content .flow-content{
+    margin-left: 30px;
+}
+
+.flow-content {
+    background-image: url("/img/keystep/flow-item.png");
+    background-size: cover;
+    margin-left: 50px;
+    margin-bottom: 60px;
+    height: 172px;
+    width: 302px;
+    float: left;
+}
+.content5{
+    background-image: url("/img/keystep/flow-item-5.png");
+    height: 196px;
+    margin-top: -12px;
+}
+
+.flow-item-warning {
+    background-image: url("/img/keystep/flow-item-warning.png");
+    background-size: cover;
+}
+.flow-item-5-warning {
+    background-image: url("/img/keystep/flow-item-5-warning.png");
+}
+
+.flow-top{
+    padding-left: 20px;
+    padding-top: 16px;
+}
+.flow-title {
+    /*font-family: 'HiraginoSansGB W3';*/
+    font-family: "Helvetica Neue Light", "HelveticaNeue-Light", "Helvetica Neue", Calibri, Helvetica, Arial;
+    font-size: 13pt;
+    font-color: #333333;
+}
+.flow-num{
+    font-family: "ArialMT Regular";
+    font-size: 20pt;
+    float: right;
+    color: #ffffff;
+    margin-right: 4px;
+    width: 30px;
+    text-align: center;
+}
+.flow-line{
+    background-image: url("/img/keystep/flow-line.png");
+    background-size: cover;
+    height: 2px;
+    width: 190px;
+    margin-left: 20px;
+    margin-top: 10px;
+}
+.flow-bottom{
+    padding-left: 20px;
+    margin-top: 12px;
+}
+.flow-item{
+    margin-bottom: 6px;
+}
+.flow-field{
+    float: left;
+    width: 54px;
+}
+.flow-progress{
+    float: left;
+    width: 142px;
+    padding-top: 3px;
+}
+.flow-value{
+    margin-left: 10px;
+}
+.progress{
+    height: 14px;
+}
+.flow-style {
+    height: 12px;
+    width: 12px;
+    background-size: cover;
+    float: left;
+    margin-top: 4px;
+    margin-right: 5px;
+    background-color: #d5d5d5;
+    border-radius: 2px;
+}
+.flow-progress .progress {
+    background-color: #f0f0f0;/*progress bg color*/
+}
+
+.flow-btn-group >.btn + .btn {
+    margin-left: -10px;
+}

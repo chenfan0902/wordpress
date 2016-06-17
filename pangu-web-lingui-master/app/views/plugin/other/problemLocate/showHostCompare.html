@@ -1,0 +1,52 @@
+<script type="text/javascript" src="/js/view/plugin/other/problemlocate/bar.js"></script>
+<script type="text/javascript" src="/js/plugins/charts/jquery.flot.orderBars.js"></script>
+        <div class="widget-title">
+              <h5 class="widget-name"><i class="icon-bar-chart"></i>主机柱状对比图</h5>
+        </div>
+        
+		    <div class="wrapper">
+		        <div class="row-fluid">
+
+                <div class="span12">  
+                  &nbsp;
+                </div>
+               <div class="span6">  
+                  <label class="control-label">采集时间：</label>
+                  <select id="collectTime" >
+                      <option value="">当前时间</option>
+                      <% for(var indexTi=0;indexTi<collectTimeList.length;indexTi++){ %>
+                        <option value="<%= collectTimeList[indexTi] %>"><%= collectTimeList[indexTi] %>分钟前</option>
+                      <% } %> 
+                  </select>
+                </div>
+                <div class="span12">  
+                  &nbsp;
+                </div>
+                     
+          </div>
+		        
+    		    <div class="row-fluid">
+    		        <% var colChartIdx = 0, index = 0  %>
+    		        <% compareList.forEach(function(item){       
+    		           if(index%2 ==0){
+    		        %>
+        					  <div class="span6">
+            						<div class="widget">
+                            	<div class="navbar"><div class="navbar-inner"><h6><%= item.name %></h6></div></div>
+                            	<div class="well body">         
+                                		<div class="graph-standard" id="<%= item.mode+item.type+item.subtype %>"></div>
+                            	</div>
+                        </div>
+        			  <% }else{ %> 
+        			         <div class="widget">
+                            	<div class="navbar"><div class="navbar-inner"><h6><%= item.name %></h6></div></div>
+                            	<div class="well body">         
+                                		<div class="graph-standard" id="<%= item.mode+item.type+item.subtype %>"></div>
+                         	    </div>
+                        </div>
+                    </div>
+        			  <% } 
+        			  index++ %>  
+    			      <% }) %>
+    			  </div>
+    	 </div>

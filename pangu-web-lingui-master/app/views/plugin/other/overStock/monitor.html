@@ -1,0 +1,66 @@
+<script type="text/javascript" src="/js/view/plugin/other/overStock/monitorClt.js"></script>
+<div class="wrapper">
+    <!-- Content head -->
+    <% include ../../../includes/contentHead.html %>
+    <!-- /Content head -->
+</div>
+
+<div class="widget">
+    <div class="navbar">
+        <div class="navbar-inner">
+            <h6><%= headTitle %></h6>
+        </div>
+    </div>
+    <div class="well body">
+        <div class="graph-standard" id="updating"></div>
+    </div>
+
+    <div class="widget">
+        <div style="display: none;" id="os_chart_list"><%= chartList %></div>
+        <div class="navbar">
+            <div class="navbar-inner">
+                <h6>订单积压分类</h6>
+            </div>
+        </div>
+        <div class="table-overflow">
+            <table id="os_detail" class="table table-striped">
+                <thead>
+                <tr>
+                    <!--<th>#</th>
+                    <th>订单标识</th>
+                    <th>订单类型</th>
+                    <th>积压数量</th>-->
+                    <% for(var i = 0; i < tabColNames.length; i++) { %>
+
+                    <th>
+                        <%= tabColNames[i] %>
+                    </th>
+
+                    <% } %>
+                </tr>
+                </thead>
+                <tbody>
+                <tr></tr>
+                <!--<tr>
+                    <td>1</td>
+                    <td>缴费开机</td>
+                    <td>7331</td>
+                    <td>10000</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>欠费停机</td>
+                    <td>7332</td>
+                    <td>20000</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>开户</td>
+                    <td>101</td>
+                    <td>2000</td>
+                </tr>-->
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,64 @@
+<script type="text/javascript" src="/js/view/plugin/tuxedo/lcu/calledSum/realtimeClt.js"></script>
+
+
+	    <div class="wrapper">
+            <!-- Content head -->
+		        <% include ../../../../includes/contentHead.html %>
+		    <!-- /Content head -->
+	    </div>
+
+    <div class="widget">
+      	<div class="navbar">
+          	<div class="navbar-inner">
+              	<h6><%= headTitle %></h6>
+                <div class="nav pull-right">
+                    <a href="#" class="dropdown-toggle navbar-icon" data-toggle="dropdown"><i class="icon-cog"></i></a>
+                    <ul class="dropdown-menu pull-right">
+                        <li><a href="javascript:ctrolAjax('0');"><i class="icon-plus"></i>停止采集</a></li>
+                        <li><a href="javascript:ctrolAjax('1');"><i class="icon-plus"></i>开始采集</a></li>
+                        <li><a href="/common/detail/query/realtime.html?chartList=<%= chartList %>"><i class="icon-plus"></i>转向实时明细</a></li>
+                    </ul>
+                </div>
+             </div>
+         </div>
+          <form action="#" class="form-horizontal">
+             <fieldset>
+                   <div class="row-fluid">
+
+                      <div class="span6">
+                        <label class="control-label">流程(服务)名：</label>
+                          <select id="transcodeValue">
+                              <option value="">所有</option>
+                              <% for(var indexTr=0;indexTr<coreTranscodeList.length;indexTr++){ %>
+                                <option value="<%= coreTranscodeList[indexTr] %>"><%= coreTranscodeList[indexTr] %></option>
+                              <% } %> 
+                          </select>
+                       </div>
+                       <div class="span6">  
+                          <label class="control-label">采集时间：</label>
+                          <select id="collectTime" >
+                              <option value="">当前时间</option>
+                              <% for(var indexTi=0;indexTi<collectTimeList.length;indexTi++){ %>
+                                <option value="<%= collectTimeList[indexTi] %>"><%= collectTimeList[indexTi] %>分钟前</option>
+                              <% } %> 
+                          </select>
+                        </div>
+                        <div class="span12">  
+                          &nbsp;
+                        </div>
+                     
+                     </div>
+              
+              </fieldset>
+          </form>
+
+	           	              
+          <div class="well body">
+            <div  id="label"></div>
+          	<div class="graph-standard"style="height:350px;"" id="updating"></div>	
+          	<div style="display:none" id="chart-list"><%= chartList %></div>
+          </div>
+      </div>
+      <!-- /updating chart -->
+    
+    </div>

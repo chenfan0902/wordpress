@@ -1,0 +1,39 @@
+<script type="text/javascript" src="/js/view/plugin/other/problemlocate/showTarget/ShowQueueSum.js"></script>
+
+    <div class="widget">
+      	<div class="navbar">
+          	<div class="navbar-inner">
+              	<h6>服务队列总量曲线图</h6>
+              </div>
+         </div>
+         
+          <div class="row-fluid">
+
+                <div class="span12">  
+                  &nbsp;
+                </div>
+               <div class="span6">  
+                  <label class="control-label">采集时间：</label>
+                  <select id="collectTime" >
+                      <option value="">当前时间</option>
+                      <% for(var indexTi=0;indexTi<collectTimeList.length;indexTi++){ %>
+                        <option value="<%= collectTimeList[indexTi] %>"><%= collectTimeList[indexTi] %>分钟前</option>
+                      <% } %> 
+                  </select>
+                </div>
+                <div class="span12">  
+                  &nbsp;
+                </div>
+                     
+          </div>
+          	              
+          <div class="well body">
+            <div  id="label"></div>
+            <input type='hidden' id='hostIp' value="<%= hostIP %>" />
+            <input type='hidden' id='targetValue' value="<%= targetValue %>" />
+          	<div class="graph-standard"style="height:350px;"" id="ShowQueueSumUpdating"></div>	
+          </div>
+      </div>
+      <!-- /updating chart -->
+    
+    </div>

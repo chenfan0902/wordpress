@@ -1,0 +1,154 @@
+  <link href="/css/jqx.base.css" rel="stylesheet" type="text/css" />
+
+  <!--<script type="text/javascript" src="/js/view/sum/chart.js"></script>-->
+  <!--<script type="text/javascript" src="/js/view/sum/pie.js"></script>-->
+  <!--<script type="text/javascript" src="/js/view/bar/bar.js"></script>-->
+  <!--<script type="text/javascript" src="/js/plugins/charts/jquery.flot.orderBars.js"></script>-->
+
+  <!--<script type="text/javascript" src="/js/view/meter/jqxcore.js"></script>-->
+  <!--<script type="text/javascript" src="/js/view/meter/jqxdata.js"></script>-->
+  <!--<script type="text/javascript" src="/js/view/meter/jqxchart.js"></script>-->
+  <!--<script type="text/javascript" src="/js/view/meter/jqxgauge.js"></script>-->
+  <!--<script type="text/javascript" src="/js/view/meter/meter.js"></script>-->
+  <!--<script type="text/javascript" src="/js/view/top/detail.js"></script>-->
+  <!--<script type="text/javascript" src="/js/view/visit/detail.js"></script>-->
+  <script type="text/javascript" src="/js/view/plugin/practicalMonitor/practicalSortsClt.js"></script>
+		    <!-- Content wrapper -->
+		    <div class="wrapper">
+			     <!-- Content head -->
+                <% include ../../includes/contentHead.html %>
+			    <!-- /Content head -->
+			</div>
+
+  <div class="wrapper">
+				<input id="date" type="hidden" value="<%= date %>"/>
+				<input id="chartList" type="hidden" value="<%= chartList %>"/>
+                <input id="selected" type="hidden" value=""/>
+
+				<div class="navbar">
+					<div class="navbar-inner"><h6>营业员开户临柜时长排名</h6>
+						<ul class="navbar-icons" style="margin-top: 8px">
+							<li><a href="#" class="tip" title="选择业务类型">
+								<select id="itf_business_sel" style="vertical-align: bottom; height: 2em; margin-top: -1em;">
+									<% for (var i = 0; i < business.length; i++) { %>
+									<option value=<%= business[i].value %>><%= business[i].name %></option>
+									<% } %>
+								</select>
+							</a></li>
+						</ul>
+					</div>
+				</div>
+      <div class="row-fluid" id="table">
+      <div class="span4">
+
+              <div class="widget navbar-tabs">
+                  <div class="navbar">
+                      <div class="navbar-inner" >
+                          <h6 >营业员</h6>
+                          <ul class="nav nav-tabs pull-right">
+                              <li class="active"><a href="#tab1" data-toggle="tab">临柜时长（分钟）</a></li>
+                          </ul>
+                      </div>
+                  </div>
+                  <div class="tabbable">
+                      <div class="tab-content">
+
+
+                          <div class="tab-pane fade active in" id="tab1">
+                              <div class="list">
+
+                                  <ol>
+                                      <% for(var i=0;i<output.length;i++) {%>
+                                      <li>
+                                          <%= output[i].clerk %><strong class="text-error pull-right"><%= output[i].pTime %></strong>
+                                      </li>
+                                      <% } %>
+                                  </ol>
+                                  <a href="/practicalMonitor/clerkSort.html?chartList=<%= chartList %>" data-pjax="#content" class="pull-right">更多</a>
+                              </div>
+                          </div>
+
+
+                      </div>
+                  </div>
+              </div>
+
+
+      </div>
+
+          <div class="span4">
+
+              <div class="widget navbar-tabs">
+                  <div class="navbar">
+                      <div class="navbar-inner" id="">
+                          <h6 >营业员</h6>
+                          <ul class="nav nav-tabs pull-right">
+                              <li class="active"><a href="#tab1" data-toggle="tab">平均临柜时长（分钟）</a></li>
+                          </ul>
+                      </div>
+                  </div>
+                  <div class="tabbable">
+                      <div class="tab-content">
+
+
+                          <div class="tab-pane fade active in" id="tab2">
+                              <div class="list">
+
+                                  <ol>
+                                      <% for(var i=0;i<output1.length;i++) {%>
+                                      <li>
+                                          <%= output1[i].clerk %><strong class="text-error pull-right"><%= output1[i].pTime %></strong>
+                                      </li>
+                                      <% } %>
+                                  </ol>
+                                  <a href="/practicalMonitor/clerkOverAvgList.html?chartList=<%= chartList %>" id="detail" data-pjax="#content" class="pull-right">更多</a>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+
+          </div>
+
+          <div class="span4">
+
+              <div class="widget navbar-tabs">
+                  <div class="navbar">
+                      <div class="navbar-inner" id="">
+                          <h6 >营业厅</h6>
+                          <ul class="nav nav-tabs pull-right">
+                              <li class="active"><a href="#tab1" data-toggle="tab">平均临柜时长（分钟）</a></li>
+                          </ul>
+                      </div>
+                  </div>
+                  <div class="tabbable">
+                      <div class="tab-content">
+
+
+                          <div class="tab-pane fade active in" id="tab3">
+                              <div class="list">
+
+                                  <ol>
+                                      <% for(var i=0;i<output2.length;i++) {%>
+                                      <li>
+                                          <%= output2[i].businessHall %><strong class="text-error pull-right"><%= output2[i].avgHall %></strong>
+                                      </li>
+                                      <% } %>
+                                  </ol>
+                                  <a href="/practicalMonitor/HallOverAvgList.html?chartList=<%= chartList %>" data-pjax="#content" class="pull-right">更多</a>
+                              </div>
+                          </div>
+
+
+                      </div>
+                  </div>
+              </div>
+
+
+          </div>
+
+</div>
+  </div>
+
+		    <!-- /content wrapper -->

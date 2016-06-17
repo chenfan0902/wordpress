@@ -1,0 +1,532 @@
+html, body {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font-family:"微软雅黑";
+	background: #5a6378;
+	color: #D3D4D7;
+}
+
+ul {
+	margin: 0;
+	padding: 0;
+}
+
+ul li {
+	list-style: none;
+	text-decoration: none;
+	margin: 0;
+	padding: 0;
+	cursor:pointer;
+}
+
+.nav-top {
+	position: absolute;
+	width: 100%;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	background-color: #393f4f;
+	opacity: .8;
+	z-Index:4;
+}
+
+.nav-top-close {
+	width: 20px;
+	height: 20px;
+	display: inline-block;
+	float: right;
+	margin-top: 10px;
+	margin-right: 10px;
+	vertical-align: bottom;
+	background: url(../../img/globalMap/nav-title-close.png) no-repeat;
+	background-size: 100% 100%;
+	cursor:pointer;
+}
+
+.nav-left-btn {
+	position: absolute;
+	top: 75px;
+	background: #a28ddf url(../../img/globalMap/nav-left-btn.png) no-repeat center;
+	cursor:pointer;
+
+
+}
+
+.nav-left {
+	position: absolute;
+	top: 75px;
+	color: #d3d4d7;
+	width: 414px;
+	opacity: 0.8;
+	background: #333846;
+	display: none;
+	z-Index:4;
+}
+
+.nav-left-head {
+	height: 40px;
+	font-size: 0;
+	width: 414px;
+}
+
+.nav-left-head span {
+	display: inline-block;
+}
+
+.nav-left-btn, .nav-left-blank {
+	width: 40px;
+	height: 40px;
+	z-Index:4;
+	cursor:pointer;
+}
+
+.nav-left-area {
+	width: 364px;
+	height: 40px;
+	vertical-align: top;
+	overflow: hidden;
+}
+
+.nav-left-area ul, .nav-left-func ul {
+	padding: 0;
+	white-space: nowrap;
+}
+
+.nav-left-area li {
+	text-decoration: none;
+	display: inline-block;
+	width: 90px;
+	height: 40px;
+	text-align: center;
+	line-height: 40px;
+	font-size: 16px;
+	margin: 0;
+	padding: 0;
+	border-right: 1px solid #5a6378;
+}
+
+.domain-select {
+	background-color: #55b45f;
+}
+
+.nav-left-area-arrow {
+	background: url(../../img/globalMap/nav-left-area-arrow.png) no-repeat center;
+	width: 10px;
+	height: 40px;
+	cursor:pointer;
+
+}
+
+.nav-left-main {
+	width: 414px;
+	height: 564px;
+	overflow: hidden;
+	z-Index:4;
+}
+
+.nav-left-func {
+	float: left;
+}
+
+.nav-left-func ul {
+	margin: 0;
+	padding: 0;
+}
+
+.nav-left-func ul li {
+	width: 40px;
+	height: 187px;
+	text-decoration: none;
+	margin: 0;
+	display: table;
+	background-color: #404757;
+	border-top: 1px solid #333846;
+	text-align: center;
+	vertical-align: text-bottom;
+}
+
+.nav-left-func ul li a {
+	display: table-cell;
+	vertical-align: middle;
+}
+
+.nav-left-content {
+	width: 374px;
+	height: 564px;
+	float: right;
+	font-size: 0;
+	line-height: 24px;
+}
+
+.nav-left-content-1{
+	width: 100%;
+	height: 100%;
+	display: none;
+}
+
+.nav-left-content-2 {
+	border-top: 1px solid #D3D4D7;
+	width: 100%;
+	height: 100%;
+	position: relative;
+	font-size: 18px;
+	display: none;
+}
+
+.nav-left-content-2 div {
+	position: absolute;
+	display: block;
+	width: 88px;
+	height: 88px;
+	text-align: center;
+	line-height: 88px;
+}
+
+.nav-handle-flow-warn {
+	left: 56px;
+	top: 36px;
+}
+
+.nav-handle-flow-notice {
+	left: 220px;
+	top: 170px;
+}
+
+.nav-handle-flow-doing {
+	left: 56px;
+	top: 304px;
+}
+
+.nav-handle-flow-done {
+	left: 220px;
+	top: 438px;
+}
+
+.nav-left-content-3 {
+	border-top: 1px solid #D3D4D7;
+	padding-left: 22px;
+	line-height: 38px;
+	display: none;
+}
+
+.nav-left-content-3 ul li {
+	font-size: 16px;
+}
+
+.nav-left-content-4 {
+	display: none;
+}
+
+.nav-left-content-5 {
+}
+
+#can_itf_exec_min {
+}
+
+.lc-5-2-rate {
+	position: absolute;
+	width: 80px;
+	height: 80px;
+	text-align: center;
+	line-height: 80px;
+	left: 147px;
+	top: 67px;
+	font-size: 16px;
+}
+
+.nav-left-content-1-panel {
+	display: block;
+	height: 187px;
+	border-top: 1px solid #D3D4D7;
+	padding-left: 22px;
+	position: relative;
+}
+
+.nav-left-content-1-panel a {
+	font-size: 14px;
+	line-height: 32px;
+	font-weight: bold;
+}
+
+.nav-left-content-1-panel li {
+	font-size: 14px;
+	white-space: nowrap;
+}
+
+.nav-right-btn {
+	position: absolute;
+	top: 65px;
+	right: 20px;
+	width: 73px;
+	height: 73px;
+	background: url(../../img/globalMap/fenglainew.png);
+	z-index:4;
+	cursor:pointer;
+
+}
+
+.nav-mid-panel {
+	display: none;
+	width: 980px;
+	height: 505px;
+	position: absolute;
+	border-radius: 8px;
+	top: 50%;
+	left: 50%;
+	margin-top: -270px;
+	margin-left: -490px;
+	background-color: rgba(41, 45, 57, 0.7);
+	z-Index:4;
+}
+
+.nav-mid-panel div {
+	width: 90%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.nav-mid-panel-title {
+	height: 60px;
+	line-height: 60px;
+	border-bottom: 1px solid #D3D4D7;
+}
+
+.nav-mid-panel-title span {
+	display: inline-block;
+}
+
+.nav-title-icon {
+	width: 36px;
+	height: 36px;
+	background: url(../../img/globalMap/mav-right-btn.png) no-repeat;
+	background-size: 100% 100%;
+	vertical-align: middle;
+}
+
+.nav-title-close {
+	width: 26px;
+	height: 26px;
+	background: url(../../img/globalMap/nav-title-close.png) no-repeat;
+	background-size: 100% 100%;
+	margin-top: 17px;
+	float: right;
+	cursor:pointer;
+}
+
+.nav-mid-drop-btn {
+	display: block;
+	background: url(../../img/globalMap/nav-mid-drop-down.png) no-repeat;
+	background-size: 100% 100%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 8px;
+	width: 20px;
+	height: 15px;
+	display: none;
+	cursor:pointer;
+
+}
+
+.nav-mid-panel-content {
+	height: 260px;
+	border-bottom: 1px solid #D3D4D7;
+}
+
+.nav-mid-panel-content ul {
+	letter-spacing: -0.5em;
+}
+
+.nav-mid-panel-content ul li {
+	display: inline-block;
+	width: 25%;
+	letter-spacing: normal;
+	position: relative;
+}
+
+.nav-mid-panel-content canvas {
+	position: absolute;
+	width: 100px;
+	height: 100px;
+	top: 30px;
+	left: 50px;
+}
+
+.nav-mid-state-bg {
+	position: absolute;
+	width: 80px;
+	height: 80px;
+	border: 10px solid #5a6378;
+	border-radius: 50px;
+	opacity: .8;
+	top: 30px;
+	left: 50px;
+}
+
+.nav-mid-state-num {
+	position: absolute;
+	width: 100px;
+	height: 100px;
+	line-height: 100px;
+	text-align: center;
+	top: 30px;
+	left: 50px;
+	font-size: 30px;
+	font-style: normal;
+}
+
+.nav-mid-state-title {
+	position: absolute;
+	width: 100px;
+	top: 140px;
+	left: 50px;
+	text-align: center;
+	font-size: 24px;
+}
+
+.nav-mid-state-btn-disble {
+	display: block;
+	position: absolute;
+	width: 80px;
+	height: 24px;
+	line-height: 24px;
+	text-align: center;
+	background-color: #5a6378;
+	border-radius: 3px;
+	top: 185px;
+	left: 60px;
+	opacity: 1;
+}
+
+.nav-mid-panel-detail {
+	margin-top: 6px;
+	height: 170px;
+	line-height: 24px;
+	overflow-y: scroll;
+}
+
+.nav-mid-panel-detail ul li {
+	padding-left: 10px;
+}
+
+.bg-state-error {
+	background-color: #bc2c2c;
+}
+
+.bg-state-warn {
+	background-color: #ff6b6b;
+}
+
+.warn-bubble {
+	position: absolute;
+	width: 40px;
+	height: 40px;
+	z-index: 2;
+}
+
+.warn-bubble-area {
+	margin-left: auto;
+	margin-right: auto;
+	background-color: #55B45F;
+	width: 40px;
+	height: 40px;
+	border-radius: 20px;
+	 -webkit-animation-name:'wobble';
+     -webkit-animation-duration: 0.8s;
+     -webkit-animation-timing-function: ease-in-out; 
+     -webkit-animation-iteration-count: infinite;
+}
+
+@-webkit-keyframes 'wobble' {
+     0% {
+        width: 40px;
+        height: 40px;
+     }
+     25% {
+     	margin-top: 10px;
+        width: 20px;
+        height: 20px;
+     }
+     50% {
+     	margin-top: 20px;
+        width: 0px;
+        height: 0px;
+     }
+     75% {
+     	margin-top: 10px;
+        width: 20px;
+        height: 20px;
+     }
+     100% {
+        width: 40px;
+        height: 40px;
+     }
+  }
+
+/* 设置滚动条的样式 */
+::-webkit-scrollbar {
+	width: 12px;
+	background-color: #1e222d;
+}
+/* 滚动槽 */
+::-webkit-scrollbar-track {
+	-webkit-box-shadow: inset 0 0 6px rgba(30,34,45,0.3);
+}
+/* 滚动条滑块 */
+::-webkit-scrollbar-thumb {
+	width: 20px;
+	border-radius: 20px;
+	background-color: #5a6378;
+	-webkit-box-shadow: inset 0 0 6px rgba(90,99,120,0.5);
+}
+
+::-webkit-scrollbar-track-piece {
+	background-color: #1e222d;
+}
+
+::-webkit-scrollbar-thumb:window-inactive {    
+	background: rgba(90,99,120,0.4);
+}
+.nav-top-innner {
+	position: absolute;
+	width: 100%;
+	height: 40px;
+	line-height: 40px;
+	text-align: right;
+	opacity: .8;
+	z-Index:3;
+}
+
+.ul1 {
+	margin: 0;
+	padding: 0;
+}
+
+.ul1 li {
+	list-style: none;
+	text-decoration: none;
+	margin: 0;
+	padding: 0;
+	cursor:pointer;
+}
+
+.ul1 li:hover{background:#EE7942; }
+
+
+.lc-line-scale {
+	font-size: 8px;
+	position: absolute;
+	width: 22px;
+	margin-left: -22px;
+	line-height: 8px;
+}
+
+.lc-line-scale i {
+	margin-bottom: 20px;
+	display: block;
+	text-align: right;
+}

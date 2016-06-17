@@ -1,0 +1,41 @@
+<script type="text/javascript" src="/js/view/plugin/other/errororders/historyTopDetailClt.js"></script>
+		    <!-- Content wrapper -->
+		    <div class="wrapper">
+
+
+                <!-- Content head -->
+			        <% include ../../../includes/contentHead.html %>
+			    <!-- /Content head -->
+			    
+                <h5 class="widget-name"></h5>
+
+                <input type="hidden" name="queryUrl" value="<%= queryUrl %>"/>
+				<div class="widget">
+                	<div class="navbar">
+                    	<div class="navbar-inner">
+                        	<h6><%= headTile %></h6>
+                            <div class="nav pull-right">
+                                <a href="#" class="dropdown-toggle navbar-icon" data-toggle="dropdown"><i class="icon-cog"></i></a>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="table-overflow">
+                        <table class="table table-striped table-bordered table-hover" id="data-table">
+                            <thead>
+                                <tr>
+									<% titles.forEach(function(title){ %>
+									<th><%= title %></th>
+									<% }) %>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+			
+
+		    </div>
+		    <!-- /content wrapper -->

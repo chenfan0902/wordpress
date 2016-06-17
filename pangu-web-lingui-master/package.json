@@ -1,0 +1,67 @@
+{
+  "name": "pangu-log-analyse-platform",
+  "description": "a log analyse platform. name is pangu. ",
+  "keywords": [
+    "pangu",
+    "log",
+    "analyse"
+  ],
+  "version": "0.1.0",
+  "author": "tangzhi@asiainfo-linkage.com",
+  "contributors": [],
+  "engines": {
+    "node": ">=0.10.12",
+    "npm": ">=1.2.32"
+  },
+  "scripts": {
+    "start": "DEBUG=*,-send,-connect:dispatcher ./node_modules/.bin/nodemon web_server.js -ss 27017 -tt 27017 --noauth",
+    "test": "./node_modules/.bin/nodemon web_server.js -ss 27017 -tt 27017 --noauth",
+    "compress": "./scripts/compressProject",
+    "rmhide": "./scripts/removeHideFile",
+    "rsweb3100": "./scripts/rsWebServe 3100 27000 27200",
+    "rsweb3101": "./scripts/rsWebServe 3101 27000 27200",
+    "rsallweb": ">nohup.out;npm run rsweb3100 & npm run rsweb3101",
+    "stopweb3100": "./scripts/stopWebServe 3100",
+    "stopweb3101": "./scripts/stopWebServe 3101",
+    "stopallweb": "npm run stopweb3100 & npm run stopweb3101",
+    "help": "echo '------------------------------------------------------------\n\t-s,--soap指定soap日志数据存放的端口\n\t-t,--tuxedo指定存放tuxedo数据的端口\n\t-p,--port指定web服务监听的端口\n\t--host指定连接mongodb的ip地址\n\nhttp、h2日志存放跟soap端口一致，cmd、database、weblogic跟tuxedo端口一致，所以启动时仅仅指定-s和-t端口即可\n\n更多参数介绍可见 web_server.js源码或pangu-la-web部署说明\n-------------------------------------------------------------\n\t运行npm run compress可压缩当前工程文件\n'"
+  },
+  "dependencies": {
+    "express": "<4.0.0",
+    "express-partials": "latest",
+    "ejs": "1.0.0",
+    "redis": "0.10.1",
+    "ioredis": "1.14.0",
+    "connect-flash": "latest",
+    "mongoose": "latest",
+    "connect-mongo": "latest",
+    "debug": "0.8.0",
+    "validator": "0.3.7",
+    "eventproxy": ">=0.1.0",
+    "xss": ">=0.0.2",
+    "express-pjax": ">= 0.0.1",
+    "plugin": ">= 0.3.2",
+    "grunt": "~0.4.1",
+    "log4js": "0.6.13",
+    "solr": "~0.2.2",
+    "grunt-contrib-jshint": "~0.1.1",
+    "grunt-contrib-nodeunit": "~0.1.2",
+    "extend": "latest",
+    "async": "latest",
+    "node-gyp": "latest",
+    "commander": "2.8.1",
+    "gridfs-stream": "1.1.1",
+    "gm": "1.21.1",
+    "node-schedule": "0.2.9"
+  },
+  "devDependencies": {
+    "eslint": "^2.9.0",
+    "eslint-config-airbnb": "^9.0.1",
+    "eslint-plugin-import": "^1.8.0",
+    "eslint-plugin-jsx-a11y": "^1.2.0",
+    "eslint-plugin-react": "^5.1.1",
+    "grunt-contrib-concat": "~0.3.0",
+    "grunt-contrib-uglify": "~0.2.7",
+    "nodemon": "latest"
+  }
+}

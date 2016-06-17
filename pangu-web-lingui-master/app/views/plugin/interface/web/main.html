@@ -1,0 +1,68 @@
+<link href="/css/popModal.min.css" rel="stylesheet" type="text/css"/>
+
+<script type="text/javascript" src="js/popModal.min.js"></script>
+<script type="text/javascript" src="js/view/plugin/interfaceWeb/web/mainClt.js"></script>
+<style>
+    #_total > .head > li{
+        background: #5B9BB4;
+    }
+</style>
+
+<div class="wrapper">
+    <!-- Content head -->
+    <% include ../../../includes/contentHead.html %>
+    <!-- /Content head -->
+</div>
+
+<div class="widget">
+    <input id="value" type="hidden" value="<%= value %>"/>
+    <input id="chartList" type="hidden" value="<%= chartList %>"/>
+    <input id="chartCList" type="hidden" value="<%= chartCList %>"/>
+    <input id="host" type="hidden" value="<%= host %>"/>
+
+    <div class="navbar">
+        <div class="navbar-inner">
+            <h6><%= title%></h6>
+            <ul class="navbar-icons" style="margin-top: 8px">
+                <li><a href="#" class="tip" title="选择SERV">
+                    <select id="interface_service" style="vertical-align: bottom; height: 2em; margin-top: -1em;">
+                    </select>
+                </a></li>
+                <li><a href="#" class="tip" title="选择OPER">
+                    <select id="interface_operate" style="vertical-align: bottom; height: 2em; margin-top: -1em;">
+                        <option>all</option>
+                    </select>
+                </a></li>
+            </ul>
+        </div>
+    </div>
+<div>
+    <div id="total" class="graph" style="width:400px;height:250px; float: left;"></div>
+    <div class="general-stats widget" id="_total" style="width: 280px; margin-top: 180px; margin-bottom: 0px; float: left;">
+        <ul class="head">
+            <li><span >总数</span></li>
+            <li><span>成功</span></li>
+            <li id="tradefail"><span>失败</span></li>
+            <li><span>失败率</span></li>
+        </ul>
+        <ul class="body">
+            <li id="TradeTotal"></li>
+            <li id="TradeSuccess"></li>
+            <li id="TradeFailure"></li>
+            <li id="TradeFailureRate"></li>
+        </ul>
+    </div>
+
+    <div id="bingtu" class="graph" style="width:400px;height:250px; float: right;"></div>
+    </div>
+
+    <div class="table-overflow">
+        <table id="interface_table" class="table table-striped table-hover">
+            <thead>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+
+</div>

@@ -1,0 +1,35 @@
+<script type="text/javascript" src="/js/files/highcharts.js"></script>
+<script type="text/javascript" src="/js/files/highcharts-more.js"></script>
+<script type="text/javascript" src="/js/view/plugin/interface/web/soapOprCalledClt.js"></script>
+
+<div class="wrapper">
+    <!-- Content head -->
+    <% include ../../../includes/contentHead.html %>
+    <!-- /Content head -->
+</div>
+
+<div class="navbar">
+    <div class="navbar-inner">
+        <h6 class=""><i class="icon-align-justify"></i>接口调用异常气泡图</h6>
+        <ul class="navbar-icons" style="margin-top: 8px">
+            <li><a class="tip" title="操作名：">
+                <select id="lsc_key" style="vertical-align: bottom; height: 2em; margin-top: -1em;">
+                    <option value="">请选择</option>
+                    <% for(var i=0;i<oprateList.length;i++){ %>
+                    <option value="<%= oprateList[i] %>"><%= oprateList[i] %></option>
+                    <% } %>
+                </select>
+            </a></li>
+        </ul>
+    </div>
+</div>
+
+<input type="hidden" id="bubbleData" value="<%= retSet %>">
+<input type="hidden" id="chartList" value="<%= chartList %>">
+<div class="widget">
+    <div class="well body">
+        <div class="row-fluid">
+            <div id="container1" style="width: 100%; height: 580px"></div>
+        </div>
+    </div>
+</div>

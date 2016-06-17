@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+##################### param #####################
+here=`pwd`
+workspace=${1-$here}
+target=`echo $workspace|rev|cut -d '/' -f1|rev`".tar"
+
+##################### function ##################
+compress(){
+    find . -name .DS_Store -delete
+    src=`ls|grep -v node_modules|grep -v "nohup.out"`
+    tar cf $target $src
+    gzip $target
+}
+
+if [ -f $target".gz" ]; then
+    echo "Remove Old Compress File !"
+    rm $target.gz && compress
+else
+    echo "Compress File Name : \"[ "$target".gz ]\""
+    compress
+fi

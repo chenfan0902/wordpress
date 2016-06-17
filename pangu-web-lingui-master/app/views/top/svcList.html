@@ -1,0 +1,43 @@
+
+		    <!-- Content wrapper -->
+		    <div class="wrapper">
+
+			    <!-- Content head -->
+			        <% include ../includes/contentHead.html %>	
+			    <!-- /Content head -->
+
+			    
+		    
+                <h5 class="widget-name" id="StatDate"><strong>统计日期：<% now = new Date()%><%= now.getFullYear()+"-"+(now.getMonth()+1)+"-"+now.getDate() %></strong> </h5>
+
+				<div class="row-fluid">
+
+					
+					<div class="span6">
+						<% var tabIdx = 0, mode='TuxState' %>
+						<% var item = all['TuxStateCalledSumBySvr'], type='CalledSumBySvr', subtype='' %>
+						<% include ../includes/widget/top.html %>	
+						
+						<% var item = all['TuxStateFailedSumBySvr'], type='FailedSumBySvr',subtype='' %>
+						<% include ../includes/widget/top.html %>	
+
+					</div>
+					
+					<div class="span6">
+						<% var item = all['TuxStateAllTimeBySvr'], type='AllTime',subtype='BySvr' %>
+						<% include ../includes/widget/top.html %>	
+
+					</div>
+					
+					<div class="span6">
+						
+
+					</div>
+
+
+				</div>
+				<!-- /排名 -->
+
+
+		    </div>
+		    <!-- /content wrapper -->

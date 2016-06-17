@@ -1,0 +1,71 @@
+<script type="text/javascript" src="/js/files/d3.v3.min.js"></script>
+<script type="text/javascript" src="/js/view/plugin/topology/graph/tree.js"></script>
+<style>
+    .node {
+        cursor: pointer;
+    }
+
+    .overlay{
+        background-color:#EEE;
+    }
+
+    .node circle {
+        fill: #fff;
+        stroke: steelblue;
+        stroke-width: 1.5px;
+    }
+
+    .node text {
+        font-size:10px;
+        font-family:sans-serif;
+    }
+
+    .link {
+        fill: none;
+        stroke: #ccc;
+        stroke-width: 1.5px;
+    }
+
+    .templink {
+        fill: none;
+        stroke: red;
+        stroke-width: 3px;
+    }
+
+    .ghostCircle.show{
+        display:block;
+    }
+
+    .ghostCircle, .activeDrag .ghostCircle{
+        display: none;
+    }
+</style>
+
+<div class="wrapper">
+    <!-- Content head -->
+    <% include ../../../includes/contentHead.html %>
+    <!-- /Content head -->
+</div>
+
+<div class="widget">
+    <input id="value" type="hidden" value="<%= value %>"/>
+
+    <div class="navbar">
+        <div class="navbar-inner">
+            <h6>全景式计费通道监控(单节点测试)</h6>
+        </div>
+    </div>
+
+    <div id="tree-container"></div>
+</div>
+
+<table id="tooltip-topology" class="table table-striped table-bordered hide">
+    <tbody>
+    <tr><td style="text-align: center">主机IP</td><td id="ntg-ip" style="text-align: center"></td></tr>
+    <tr><td style="text-align: center">用户</td><td id="ntg-user" style="text-align: center"></td></tr>
+    <tr><td style="text-align: center">当日调用总量</td><td id="ntg-call" style="text-align: center"></td></tr>
+    <tr><td style="text-align: center">当日异常总量</td><td id="ntg-fail" style="text-align: center"></td></tr>
+    <tr><td class="success" style="text-align: center">当日成功率</td><td id="ntg-rate" style="text-align: center"></td></tr>
+    <tr id="ntg-fail-content" class="hide"><td colspan="2" style="text-align: center"></td></tr>
+    </tbody>
+</table>

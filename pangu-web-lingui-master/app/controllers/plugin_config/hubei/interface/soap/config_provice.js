@@ -1,0 +1,38 @@
+var  provice_info = [
+    "10_rsp_code_info_内蒙古省",
+    "11_rsp_code_info_北京市",
+    "13_rsp_code_info_天津市",
+    "17_rsp_code_info_山东省",
+    "18_rsp_code_info_河北省",
+    "19_rsp_code_info_山西省",
+    "22_rsp_code_info_澳门市",
+    "30_rsp_code_info_安徽省",
+    "31_rsp_code_info_上海市",
+    "34_rsp_code_info_江苏省",
+    "36_rsp_code_info_浙江省",
+    "38_rsp_code_info_福建省",
+    "50_rsp_code_info_海南省",
+    "51_rsp_code_info_广东省",
+    "59_rsp_code_info_广西省",
+    "70_rsp_code_info_青海省",
+    "71_rsp_code_info_湖北省",
+    "74_rsp_code_info_湖南省",
+    "75_rsp_code_info_江西省",
+    "76_rsp_code_info_河南省",
+    "79_rsp_code_info_西藏省",
+    "81_rsp_code_info_四川省",
+    "83_rsp_code_info_重庆省",
+    "84_rsp_code_info_陕西省",
+    "85_rsp_code_info_贵州省",
+    "86_rsp_code_info_云南省",
+    "87_rsp_code_info_甘肃省",
+    "88_rsp_code_info_宁夏省",
+    "89_rsp_code_info_新疆省",
+    "90_rsp_code_info_吉林省",
+    "91_rsp_code_info_辽宁省",
+    "97_rsp_code_info_黑龙江省",
+    "00_rsp_code_info_其他"
+];
+
+
+exports.provice_info = provice_info;

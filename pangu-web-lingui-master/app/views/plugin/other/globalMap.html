@@ -1,0 +1,192 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script type="text/javascript" src="/js/view/plugin/other/globalMap/jquery.js"></script>
+    <script type="text/javascript" src="/js/view/plugin/other/globalMap/mapctrl.js"></script>
+    <script type="text/javascript" src="/js/view/plugin/other/globalMap/mapaction.js"></script>
+    <script type="text/javascript" src="/js/view/plugin/other/globalMap/cbdata.js"></script>
+    <script type="text/javascript" src="/js/view/plugin/other/globalMap/main.js"></script>
+    <link rel="stylesheet" href="/css/globalMap/main.css" />
+</head>
+<body onload="myFun()">
+<img src="../../../../img/globalMap/map1.png" id="map" style="position:absolute;z-Index:0;" />
+<div id="content">
+    <div class="nav-top">
+
+        <div class="nav-top-innner">
+            <span id  ='testSpan' class="nav-top-content"></span>
+
+        </div>
+        <span class="nav-top-close"></span>
+    </div>
+    <div class="nav-left">
+        <div class="nav-left-head">
+            <span class="nav-left-blank"></span>
+					<span class="nav-left-area">
+						<ul id="lc_tab">
+                        </ul>
+					</span>
+            <span class="nav-left-area-arrow"></span>
+        </div>
+        <div class="nav-left-main">
+            <div class="nav-left-func">
+                <ul>
+                    <li id="nav_left_func_warn"><a>告<br/>警<br/>明<br/>细</a></li>
+                    <li id="nav_left_func_flow"><a>处<br/>理<br/>流<br/>程</a></li>
+                    <li id="nav_left_func_detail"><a>处<br/>理<br/>详<br/>情</a></li>
+                </ul>
+            </div>
+            <div class="nav-left-content">
+
+                <!-- Tuxedo -->
+                <div class="nav-left-content-1">
+							<span class="nav-left-content-1-panel">
+								<a id="lc_1_title">Tuxedo(告警)</a>
+								<ul>
+                                    <li>主机: <span id="lc_1_host"></span></li>
+                                    <li>服务: <span id="lc_1_serv"></span></li>
+                                    <li>所属域: <span id="lc_1_domain"></span></li>
+                                    <li>通道数: <span id="lc_1_chanel"></span></li>
+                                    <li>队列值: <span id="lc_1_queue"></span></li>
+                                    <li>当前处理人: <span id="lc_1_handler"></span></li>
+                                </ul>
+							</span>
+							<span class="nav-left-content-1-panel">
+								<a id="lc_1_t2_title"></a>
+								<ul id="lc_1_t2_top">
+                                </ul>
+							</span>
+							<span class="nav-left-content-1-panel">
+								<a id="lc_1_t3_title"></a>
+
+                                	<div class="lc-line-scale">
+                                    </div>
+								<canvas id="can_itf_failure" width="352" height="150"></canvas>
+
+							</span>
+                </div>
+
+                <!-- Oracle -->
+                <div class="nav-left-content-4">
+							<span class="nav-left-content-1-panel">
+								<a id="lc_4_t1_title"></a>
+								<ul>
+                                    <li>主机: <span id="lc_4_t1_host"></span></li>
+                                    <li>实例: <span id="lc_4_t1_ins"></span></li>
+                                    <li>监控类型: <span id="lc_4_t1_type"></span></li>
+                                    <li>所属域: <span id="lc_4_t1_domain"></span></li>
+                                    <li>活动会话: <span id="lc_4_t1_session"></span></li>
+                                    <li>处理人: <span id="lc_4_t1_handler"></span></li>
+                                </ul>
+							</span>
+							<span class="nav-left-content-1-panel">
+								<a id="lc_4_t2_title"></a>
+                                	<div class="lc-line-scale">
+                                    </div>
+								<canvas id="can_ora_min" width="330" height="150"></canvas>
+							</span>
+							<span class="nav-left-content-1-panel">
+								<a id="lc_4_t3_title"></a>
+
+                                <div class="lc-line-scale">
+                                </div>
+								<canvas id="can_ora_hour" width="330" height="150"></canvas>
+							</span>
+                </div>
+
+                <!-- 接口 -->
+                <div class="nav-left-content-5">
+							<span class="nav-left-content-1-panel">
+								<a id="lc_5_title"></a>
+								<ul>
+                                    <li>接口名: <span id="lc_5_intf"></span></li>
+                                    <li>类型: <span id="lc_5_type"></span></li>
+                                    <li>所属域: <span id="lc_5_domain"></span></li>
+                                    <li>所属省: <span id="lc_5_province"></span></li>
+                                    <li>流向: <span id="lc_5_to"></span></li>
+                                    <li>处理人: <span id="lc_5_handler"></span></li>
+                                </ul>
+							</span>
+							<span class="nav-left-content-1-panel">
+								<a id="lc_5_2_title"></a>
+								<canvas id="can_itf_failure_min" width="330" height="150"></canvas>
+								<div class="lc-5-2-rate">成功率<span id="lc_5_2_rate"></span>%</div>
+							</span>
+							<span class="nav-left-content-1-panel">
+								<a id="lc_5_3_title"></a>
+                                	<div class="lc-line-scale">
+                                    </div>
+								<canvas id="can_itf_exec_min" width="352" height="150"></canvas>
+
+							</span>
+                </div>
+                <div class="nav-left-content-2">
+                    <div class="nav-handle-flow-warn">告警</div>
+                    <div class="nav-handle-flow-notice">关注</div>
+                    <div class="nav-handle-flow-doing">处理中</div>
+                    <div class="nav-handle-flow-done">故障恢复</div>
+                    <canvas id="can_handle_flow" width="374" height="564"></canvas>
+                </div>
+                <div class="nav-left-content-3">
+                    <ul id="lc_3_handle_detail">
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="nav-left-btn"></div>
+    <div class="nav-mid-panel">
+        <div class="nav-mid-panel-title">
+            <span><b>检测状态</b></span>
+            <span class="nav-title-icon"></span>
+            <span class="nav-title-close"></span>
+        </div>
+        <div class="nav-mid-panel-content">
+            <ul>
+                <li>
+                    <span class="nav-mid-state-bg"></span>
+                    <canvas id="can_state_1" width="100" height="100"></canvas>
+                    <i id="mc_state_1_num" class="nav-mid-state-num"></i>
+                    <b class="nav-mid-state-title">Tuxedo</b>
+                    <a id="mc_state_1_qry" class="nav-mid-state-btn-disble">查询</a>
+                </li>
+                <li>
+                    <span class="nav-mid-state-bg"></span>
+                    <canvas id="can_state_2" width="100" height="100"></canvas>
+                    <i id="mc_state_2_num" class="nav-mid-state-num"></i>
+                    <b class="nav-mid-state-title">Oracle</b>
+                    <a id="mc_state_2_qry" class="nav-mid-state-btn-disble">查询</a>
+                </li>
+                <li>
+                    <span class="nav-mid-state-bg"></span>
+                    <canvas id="can_state_3" width="100" height="100"></canvas>
+                    <i id="mc_state_3_num" class="nav-mid-state-num"></i>
+                    <b class="nav-mid-state-title">接口</b>
+                    <a id="mc_state_3_qry" class="nav-mid-state-btn-disble">定位</a>
+                </li>
+                <li>
+                    <span class="nav-mid-state-bg"></span>
+                    <canvas id="can_state_4" width="100" height="100"></canvas>
+                    <i id="mc_state_4_num" class="nav-mid-state-num"></i>
+                    <b class="nav-mid-state-title">Weblogic</b>
+                    <a id="mc_state_4_qry" class="nav-mid-state-btn-disble">定位</a>
+                </li>
+            </ul>
+        </div>
+        <a class="nav-mid-drop-btn"></a>
+        <div class="nav-mid-panel-detail">
+
+            <ul id="mp_warn_detail" class ="ul1">
+
+            </ul>
+        </div>
+    </div>
+    <div class="nav-right-btn"></div>
+
+</div>
+</body>
+</html>

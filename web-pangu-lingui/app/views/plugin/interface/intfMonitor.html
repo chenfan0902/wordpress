@@ -1,0 +1,87 @@
+<link href="/css/jqx.base.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/js/view/plugin/interface/intfMonitorClt.js"></script>
+<script type="text/javascript" src="/js/view/meter/jqxcore.js"></script>
+<script type="text/javascript" src="/js/view/meter/jqxdata.js"></script>
+<script type="text/javascript" src="/js/view/meter/jqxchart.js"></script>
+<script type="text/javascript" src="/js/plugins/tables/jquery.dataTables.min.js"></script>
+<div class="wrapper">
+    <!-- Content head -->
+    <% include ../../includes/contentHead.html %>
+    <!-- /Content head -->
+</div>
+
+<style type="text/css">
+    .legend table {
+        top: 20px !important;
+        right: 10px !important;
+    }
+</style>
+
+<div class="widget">
+    <input id="value" type="hidden" value="<%= value %>"/>
+    <div  class="navbar">
+        <div class="navbar-inner">
+            <h6>接口监控</h6>
+            <ul class="navbar-icons" style="margin-top: 8px">
+                <li><a href="#" class="tip" title="选择显示省份">
+                    <select id="itf_prov_sel" style="vertical-align: bottom; height: 2em; margin-top: -1em;">
+                        <% for (var i = 0; i < hosts.length; i++) { %>
+                        <option value=<%= hosts[i].value %>><%= hosts[i].name %></option>
+                        <% } %>
+                    </select>
+                </a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="well body">
+        <div class="graph-standard" id="intf_monitor"></div>
+    </div>
+
+    <div class="widget">
+        <div class="navbar"><div class="navbar-inner"><h6>最近5分钟具体接口调用</h6></div></div>
+        <div class="table-overflow">
+            <table id="intf_5min_detail" class="table table-striped">
+                <thead>
+                <tr>
+                    <th>接口名称</th>
+                    <th>总调用量</th>
+                    <th>成功量</th>
+                    <th>成功率(%)</th>
+                </tr>
+                </thead>
+                <tbody>
+                <!-- <tr>
+                    <td>Queue1</td>
+                    <td>缴费开机</td>
+                    <td>7331</td>
+                    <td>80</td>
+                </tr>
+                <tr>
+                    <td>Queue1</td>
+                    <td>欠费停机</td>
+                    <td>7332</td>
+                    <td>40</td>
+                </tr>
+                <tr>
+                    <td>Queue1</td>
+                    <td>开户</td>
+                    <td>101</td>
+                    <td>20</td>
+                </tr> -->
+                </tbody>
+            </table>
+            <div class="table-footer">
+                <div class="pagination">
+                    <ul id="intf_tab_foot">
+                        <!-- <li><a href="#">Prev</a></li>
+                        <li><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li class="active"><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">Next</a></li> -->
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

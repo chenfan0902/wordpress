@@ -1,0 +1,43 @@
+<div class="widget navbar-tabs">
+	<div class="navbar">
+		<div class="navbar-inner">
+			<h6><%= item.name %></h6>
+			<ul class="nav nav-tabs pull-right">
+				<% var first = true %>
+				<% item.scopes.forEach(function(scope, idx){ 
+				if ( item[scope] ) { %>
+				<li<% if(first){ first=false; %> class="active"<% } %>><a href="#tab<%= tabIdx+idx+1 %>" data-toggle="tab"><%= item.scopeNames[scope] %></a></li>
+				<%	}	%> 
+				<% }) %>
+			</ul>
+		</div>
+	</div>
+	<div class="tabbable">
+		<div class="tab-content">
+			<% var first = true %>
+			<% item.scopes.forEach(function(scope, idx){ 
+				if ( item[scope] ) { %>
+			<div class="tab-pane fade<% if(first){ first=false; %> active in<% } %>" id ="tab<%= ++tabIdx %>"> 
+				<div class="list">
+					<ol>
+						<% item[scope].forEach(function(info){ %>
+                            <% if(mode === 'CustservCalledSum') {%>
+						        <li>
+                                    <a href="/detail.html?mode=<%= mode %>&type=<%= type %>&scope=<%= scope %>&subtype=<%= subtype %>&clientIp=<%= info[item.colNames[0]] %>&date=<%= value %>" data-pjax='#content' ">
+                                        <%= info[item.colNames[0]] %><strong class="text-error pull-right"><%= info[item.colNames[1]].toFixed(item.fixed||0) %></strong>
+                                    </a>
+                                </li>
+                            <% }else{%>
+                                <li><%= info[item.colNames[0]] %><strong class="text-error pull-right"><%= info[item.colNames[1]].toFixed(item.fixed||0) %></strong></li>
+                            <% }%>
+						<% }) %>
+					</ol>
+					<a href="/detail.html?mode=<%= mode %>&type=<%= type %>&scope=<%= scope %>&subtype=<%= subtype %>&date=<%= value %>" data-pjax='#content' class="pull-right">更多</a>
+				</div>
+			</div>
+				<%	}	%> 
+			<% }) %>
+
+		</div>
+	</div>
+</div>

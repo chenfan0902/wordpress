@@ -1,0 +1,54 @@
+<%if(style!==undefined){%>
+<link href="<%= style%>" rel="stylesheet" type="text/css"/><%}else{%>
+<link href="/css/d3js/keystep.css" rel="stylesheet" type="text/css"/><%}%>
+<script type="text/javascript" src="/js/files/d3.v3.min.js"></script>
+<script type="text/javascript" src="/js/view/plugin/common/d3js/keyStepClt.js"></script>
+
+<div class="wrapper">
+    <!-- Content head -->
+    <% include ../../../includes/contentHead.html %>
+    <!-- /Content head -->
+</div>
+
+<div class="widget">
+    <input id="value" type="hidden" value="<%= value %>"/>
+    <input id="chartList" type="hidden" value="<%= chartList %>"/>
+    <div id="nodesInfo" style="display: none"><%= nodesInfo%></div>
+
+    <div class="navbar">
+        <div class="navbar-inner">
+            <h6><%= title%></h6><%var pageType = 'key-step'%>
+            <!--<% include ../../../includes/plugin/fiveMinuteWholeDay.html%>-->
+        </div>
+    </div>
+
+    <div style="height: 50px;"></div>
+    <div class="wrapper flow-wrapper1">
+        <div class="row-fluid"><%var nInfo = JSON.parse(nodesInfo);%><% for(var i=0; i<nInfo.length; i++){ %><%var norm=nInfo[i].norm%>
+            <div class="flow-content content<%=maxNormLen%>">
+                <div class="flow-top">
+                    <div class="flow-title"><%= nInfo[i].name%>
+                        <span class="flow-num"><%=i+1%></span>
+                    </div>
+                </div>
+                <div class="flow-line"></div>
+                <div class="flow-bottom">
+                    <ul class="flow-list <%= nInfo[i].webId%>"><%for(var j=0;j<norm.length;j++){%>
+                        <li class="flow-item">
+                            <div class="flow-style"></div>
+                            <div class="flow-field"><%=norm[j][0]%></div>
+                            <div class="flow-progress">
+                                <div class="progress <%=norm[j][1]%>">
+                                    <div class="bar" style="width: 60%; min-width: <%if(norm[j][2]=='other'){%>2<%}else{%>2.5<%}%>em;">
+                                        <span class="progress-value">0</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <span class="flow-value">0.0%</span>
+                        </li>
+                        <%}%></ul>
+                </div>
+            </div><%}%>
+        </div>
+    </div>
+</div>

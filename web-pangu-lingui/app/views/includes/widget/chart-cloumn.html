@@ -1,0 +1,10 @@
+<div class="widget">
+	<div class="navbar"><div class="navbar-inner"><h6><%= item.name %>(<%= item.scopeNames[item.scopes[0]] %>)</h6></div></div>
+	<div class="well body">
+
+		<div class="graph-standard" id="placeholder-<%= ++colChartIdx %>"></div>
+		<div  id="label"></div>
+		<div style="display:none" id="placeholder-data<%= colChartIdx %>"><%= JSON.stringify(item[item.scopes[0]]) %></div>
+	</div>
+</div>
+

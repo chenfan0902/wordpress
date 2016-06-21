@@ -1,0 +1,24 @@
+<div class="widget">
+	<div class="navbar"><div class="navbar-inner"><h6><%= item.name %></h6></div></div>
+	<div class="well body">
+		<ul class="stats-details">
+			<li>
+				<strong>统计日期:</strong>
+				<span>2013-06-18</span>
+			</li>
+			<li>
+				<div class="number">
+					<a href="#" title="" data-toggle="dropdown"></a>
+					<ul class="dropdown-menu pull-right">
+						<li><a href="#" title=""><i class="icon-refresh"></i>刷新</a></li>
+						<li><a href="#" title=""><i class="icon-list"></i>明细</a></li>
+						<li><a href="#" title=""><i class="icon-cog"></i>配置</a></li>
+					</ul>
+					<span><%= item._count %></span>
+				</div>
+			</li>
+		</ul>
+		<div class="graph" id="chart1">[<% item[item.scopes[0]].forEach(function(data, idx){ %><% if (idx != 0 ) { %>,<% } %>[<%= data.hours %>, <%= data._count %>]<% }) %>]</div>
+	</div>
+</div>
+

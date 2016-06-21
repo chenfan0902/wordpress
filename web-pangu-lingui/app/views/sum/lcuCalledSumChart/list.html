@@ -1,0 +1,78 @@
+
+	<script type="text/javascript" src="/js/view/sum/list.js"></script>	
+	<script type="text/javascript" src="/js/view/sum/chart.js"></script>
+	<script type="text/javascript" src="/js/view/sum/pie.js"></script>
+
+
+		    <!-- Content wrapper -->
+		    <div class="wrapper">
+
+			     <!-- Content head -->
+			        <% include ../../includes/contentHead.html %>	
+			    <!-- /Content head -->
+
+			    
+		    
+                <h5 class="widget-name">流程统计</h5>
+				<div class="row-fluid">
+
+					<div class="span4">
+
+						<% var chartAreaIdx = 0 %>
+
+						<% var item = all['TuxStateCalledSumByTimeByHour'],
+							mode='TuxState', type='CalledSumByTimeByHour',subtype='';
+							item.color='#46bb00' %>
+						<% include ../../includes/widget/chart-area.html %>	
+						
+				    </div>
+					
+					<div class="span4">
+						<% var item = all['TuxStateFailedSumByTimeByHour'],
+							mode='TuxState', type='FailedSumByTimeByHour',subtype='';
+							item.color='#f1553c' %>
+						<% include ../../includes/widget/chart-area.html %>	
+
+					</div>
+					
+					<div class="span4">
+
+						<div class="widget">
+			            	<div class="navbar">
+			                	<div class="navbar-inner">
+			                    	<h6>成功率(日)</h6>
+			                    </div>
+			                </div>
+			                <div class="well body">
+								<div class="graph-standard" id="chart-pie-1"></div>
+								<div style="display:none" id="chart-pie-data1">[{"label":"成功总数", "data": <%= all['TuxStateCalledSumByTimeByHour'].count - all['TuxStateFailedSumByTimeByHour'].count  %>},{"label":"<%= all['TuxStateFailedSumByTimeByHour'].name %>", "data":<%= all['TuxStateFailedSumByTimeByHour'].count %>}]</div>
+			                </div>
+			            </div>		
+
+					</div>
+                
+				</div>
+				<div class="row-fluid">
+					<div class="span12">
+                        <% var item = all['TuxStateCalledSumByTimeAtDay'], 
+							mode='TuxState', type='CalledSumByTime',subtype='AtDay';
+							item.color='#46bb00' %>
+						<% include ../../includes/widget/chart-area.html %>
+                    </div>
+				</div>
+				<div class="row-fluid">	
+					<div class="span12">
+						<% var item = all['TuxStateFailedSumByTimeAtDay'], 
+							mode='TuxState', type='FailedSumByTime',subtype='AtDay';
+							item.color='#f1553c' %>
+						<% include ../../includes/widget/chart-area.html %>
+
+					</div>
+
+
+				</div>
+				<!-- /排名 -->
+
+
+		    </div>
+		    <!-- /content wrapper -->

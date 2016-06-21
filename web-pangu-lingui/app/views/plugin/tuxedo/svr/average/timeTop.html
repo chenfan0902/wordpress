@@ -1,0 +1,44 @@
+<div class="wrapper">
+    <!-- Content head -->
+    <% include ../../../../includes/contentHead.html %>
+    <!-- /Content head -->
+</div>
+
+
+<h5 class="widget-name"></h5>
+<!-- Content wrapper -->
+<div class="widget">
+    <input id="date" type="hidden" value="<%= date %>"/>
+    <input id="chartList" type="hidden" value="<%= chartList %>"/>
+    <div class="navbar">
+        <div class="navbar-inner">
+            <h6 class=""><i class="icon-align-justify"></i><%= headTitle %></h6>
+
+        </div>
+    </div>
+
+    <div class="well body">
+    <%
+        var detail = false;
+        for(var i=0; i<hosts.length; i++){
+        var key = hosts[i];
+        var item = all[key];
+    %>
+    <%
+        if(i%3 === 0){
+    %>
+        <%  if(i !== 0){ %>
+            </div>
+        <% } %>
+            <div class="row-fluid">
+    <% } %>
+
+            <div class="span4">
+                <% include ./aveItem.html %>
+            </div>
+
+    <%  } %>
+</div>
+
+</div>
+<!-- /content wrapper -->

@@ -1,0 +1,210 @@
+<script type="text/javascript" src="/js/view/plugin/common/detail/query/historyClt.js"></script>
+<link href="/css/popModal.min.css" rel="stylesheet" type="text/css"/>
+<style>
+    .text-right {
+        text-align: right;
+    }
+
+    #lp_dialog {
+        width: 100%;
+        height: 100%;
+        opacity: 0.9;
+        display: none;
+    }
+
+    #lp_dialog_header {
+        position: absolute;
+        width: 90%;
+        height: 2.6em;
+        left: 5%;
+        top: 15%;
+        margin-top: -2.6em;
+        z-index: 10002;
+        font-size: 1.2em;
+    }
+
+    #lp_dialog_content {
+        position: absolute;
+        width: 90%;
+        left: 5%;
+        top: 15%;
+        z-index: 10002;
+        padding-top: -4em;
+        overflow: hidden;
+    }
+
+    #lp_dialog_bg {
+        position: absolute;
+        width: 100%;
+        left: 0%;
+        top: 0%;
+        z-index: 10001;
+        opacity: 0.8;
+        background-color: #fff;
+    }
+
+
+
+    #detail_dialog {
+        width: 100%;
+        height: 100%;
+        display: none;
+        opacity: 1;
+    }
+
+    #detail_dialog_header {
+        position: absolute;
+        width: 60%;
+        height: 2.6em;
+        left: 20%;
+        top: 15%;
+        margin-top: -2.6em;
+        z-index: 1002;
+        font-size: 1.2em;
+    }
+
+    #detail_dialog_content {
+        position: absolute;
+        width: 60%;
+        height: 50%;
+        left: 20%;
+        top: 15%;
+        max-height: 350px;
+        background-color: #fff;
+        z-index: 1002;
+        padding-top: -4em;
+        overflow: hidden;
+    }
+
+    #detail_dialog_content table {
+        margin-top: 2.5em;
+    }
+
+    #detail_dialog_bg {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0%;
+        top: 0%;
+        z-index: 1001;
+        opacity: 0.8;
+        background-color: #fff;
+    }
+
+</style>
+		    <!-- Content wrapper -->
+		    <div class="wrapper">
+
+
+                <!-- Content head -->
+			        <% include ../../../../includes/contentHead.html %>
+			    <!-- /Content head -->
+			    
+                <h5 class="widget-name"></h5>
+
+                <input type="hidden" name="queryUrl" value="<%= queryUrl %>"/>
+                <input type="hidden" name="chartList" value="<%= chartList %>"/>
+                <input type="hidden" name="bVisibleFlag" value="<%= bVisibleFlag %>"/>
+                <input type="hidden" name="detailTitle" value="<%= detailTitle %>"/>
+                <input id="lcuHost" type="hidden" value="<%= lcuHost %>"/>
+                <input id="lcuName" type="hidden" value="<%= lcuName %>"/>
+
+				<div class="widget">
+                	<div class="navbar">
+                    	<div class="navbar-inner">
+                        	<h6><%= headTile %></h6>
+                            <ul class="navbar-icons" style="margin-top: 8px">
+                                <% if( hosts.length > 0) { %>
+                                    <li><a href="#" class="tip" title="选择显示主机地址">
+                                        <select id="hqd_host_sl" style="vertical-align: bottom; height: 2em; margin-top: -1em;">
+                                            <option>全部显示</option>
+                                            <% for (var i = 0; i < hosts.length; i++) { %>
+                                            <%if(hosts[i].indexOf(':')!=-1){%> <option disabled><%= hosts[i] %></option><%}else{%>
+                                            <option><%= hosts[i] %></option><%}%><% } %>
+                                        </select>
+                                    </a></li>
+                                <% } %>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="table-overflow">
+                        <table class="table table-striped table-bordered table-hover" id="data-table">
+                            <thead>
+                                <tr>
+									<% titles.forEach(function(title){ %>
+									<th><%= title %></th>
+									<% }) %>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+			
+
+		    </div>
+<% if(bVisibleFlag !== '') {%>
+
+<div id="detail_dialog">
+
+    <div id="detail_dialog_header" class="navbar">
+        <div class="navbar-inner">
+            <h6 id="detail_dialog_content_title">Title</h6>
+            <ul class="navbar-icons">
+                <li>
+                    <a class="tip" title="关闭">
+                        <i class="ico-remove" id="detail_dialog_header_close"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="detail_dialog_content" class="well body"></div>
+
+    <div id="detail_dialog_bg"></div>
+</div>
+
+<% }else{%>
+    <div id="lp_dialog">
+
+        <div id="lp_dialog_header" class="navbar">
+            <div class="navbar-inner">
+                <h6 id="lp_dialog_content_title">Title</h6>
+                <ul class="navbar-icons">
+                    <li><a href="#" class="tip" title="选择显示进程">
+                        <select id="lp_pids" style="vertical-align: bottom; height: 2em; margin-top: -1em;"></select>
+                    </a></li>
+                    <li>
+                        <a class="tip" title="关闭">
+                            <i class="ico-remove" id="lp_dialog_header_close"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="lp_dialog_content" class="well body">
+            <table id="lp_table" class="table table-striped table-hover">
+                <thead>
+                <tr>
+                    <% for (var i = 0; i < tabColNames.length; i++) { %>
+                    <th style="text-align: center"><%= tabColNames[i] %></th>
+                    <% } %>
+                </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+
+        <div id="lp_dialog_bg"></div>
+        <input id="lp_host" type="hidden"/>
+        <input id="lp_trans" type="hidden"/>
+        <input id="value" type="hidden" value="<%= value %>"/>
+    </div>
+<% }%>
+
+		    <!-- /content wrapper -->

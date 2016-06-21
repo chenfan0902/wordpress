@@ -1,0 +1,30 @@
+<div class="widget navbar-tabs">
+	<div class="navbar">
+		<div class="navbar-inner">
+			<h6><%= item.name %></h6>
+			<ul class="nav nav-tabs pull-right">
+				<li class="active" ><a href="#" data-toggle="tab"><%= item.scopeNames %></a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="tabbable" >
+		<div class="tab-content" style="height: 250px">
+			<% var first = true %>
+			<% item.scopes.forEach(function(scope, idx){ 
+				if ( item[scope] ) { %>
+			<div class="tab-pane fade<% if(first){ first=false; %> active in<% } %>" id ="tab1"> 
+				<div class="list">
+					<ol>
+						<% item[scope].forEach(function(info){ %>
+						<li><%= info[item.colNames[0]] %><strong class="text-error pull-right"><%= info[item.colNames[1]].toFixed(item.fixed||0) %></strong></li>
+						<% }) %>
+					</ol>
+					<a href="/detail.html?mode=<%= mode %>&type=<%= type %>&scope=<%= scope %>&subtype=<%= subtype %>" data-pjax='#content' class="pull-right">更多</a>
+				</div>
+			</div>
+				<%	}	%> 
+			<% }) %>
+
+		</div>
+	</div>
+</div>

@@ -1,0 +1,41 @@
+<!--<script type="text/javascript" src="/js/view/flow.js"></script> -->
+<script type="text/javascript" src="/js/view/raphael.js"></script>
+<script type="text/javascript" src="/js/view/flowchart-1.2.6.min.js"></script>
+<script type="text/javascript" src="/js/view/pageflow.js"></script>
+	    <div class="wrapper">
+            <!-- Content head -->
+		        <% include ../../../includes/contentHead.html %>
+		    <!-- /Content head -->
+	    </div>
+<div id="canvas" style="width:100%"></div>
+<form id="wizard3" method="post" action="#" class="form-horizontal row-fluid well">
+    <input type="hidden" id="flowInfo" value="<%= flowInfo %>" />
+        
+        <div id = "flowStep">
+        </div>
+
+        <div class="form-actions align-right">
+        	
+            <input class="btn" id="back-3" value="Back" type="reset" />
+            <input type="submit" class="btn btn-danger" id="next-3" value="Next">
+        </div>
+</form>	    
+	    
+	    
+<script type="text/javascript">
+
+ /*   var item = JSON.parse($("#flowInfo").attr("value")); 
+    var flow 
+    flow = new Flow("paper", 1200, 150,item);        
+    flow.draw(1);
+    function pre(){ 
+
+        flow.pre();
+    }
+       
+    function next(){
+    
+        flow.next();
+    }
+    */
+</script>

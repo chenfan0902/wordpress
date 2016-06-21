@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>凤眼@cBSS 业务综合监控平台</title>
+    <link href="/css/main.css" rel="stylesheet" type="text/css" />
+
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/jquery-ui.min.js"></script>
+
+
+    <script type="text/javascript" src="/js/plugins/charts/jquery.sparkline.min.js"></script>
+
+    <script type="text/javascript" src="/js/plugins/ui/jquery.easytabs.min.js"></script>
+    <script type="text/javascript" src="/js/plugins/ui/jquery.collapsible.min.js"></script>
+    <script type="text/javascript" src="/js/plugins/ui/jquery.mousewheel.js"></script>
+    <script type="text/javascript" src="/js/plugins/ui/jquery.bootbox.min.js"></script>
+    <script type="text/javascript" src="/js/plugins/ui/jquery.colorpicker.js"></script>
+    <script type="text/javascript" src="/js/plugins/ui/jquery.timepicker.min.js"></script>
+    <script type="text/javascript" src="/js/plugins/ui/jquery.jgrowl.js"></script>
+    <script type="text/javascript" src="/js/plugins/ui/jquery.fancybox.js"></script>
+    <script type="text/javascript" src="/js/plugins/ui/jquery.fullcalendar.min.js"></script>
+    <script type="text/javascript" src="/js/plugins/ui/jquery.elfinder.js"></script>
+
+    <script type="text/javascript" src="/js/plugins/charts/jquery.flot.js"></script>
+    <script type="text/javascript" src="/js/plugins/charts/jquery.flot.resize.js"></script>
+    <script type="text/javascript" src="/js/plugins/charts/jquery.flot.selection.js"></script>
+    <script type="text/javascript" src="/js/plugins/charts/jquery.flot.pie.js"></script>
+    <script type="text/javascript" src="/js/plugins/charts/jquery.sparkline.min.js"></script>
+
+    <script type="text/javascript" src="/js/plugins/uploader/plupload.js"></script>
+    <script type="text/javascript" src="/js/plugins/uploader/plupload.html4.js"></script>
+    <script type="text/javascript" src="/js/plugins/uploader/plupload.html5.js"></script>
+    <script type="text/javascript" src="/js/plugins/uploader/jquery.plupload.queue.js"></script>
+
+    <script type="text/javascript" src="/js/plugins/forms/jquery.uniform.min.js"></script>
+    <script type="text/javascript" src="/js/plugins/forms/jquery.autosize.js"></script>
+    <script type="text/javascript" src="/js/plugins/forms/jquery.inputlimiter.min.js"></script>
+    <script type="text/javascript" src="/js/plugins/forms/jquery.tagsinput.min.js"></script>
+    <script type="text/javascript" src="/js/plugins/forms/jquery.inputmask.js"></script>
+    <script type="text/javascript" src="/js/plugins/forms/jquery.select2.min.js"></script>
+    <script type="text/javascript" src="/js/plugins/forms/jquery.listbox.js"></script>
+    <script type="text/javascript" src="/js/plugins/forms/jquery.validation.js"></script>
+    <script type="text/javascript" src="/js/plugins/forms/jquery.validationEngine-en.js"></script>
+    <script type="text/javascript" src="/js/plugins/forms/jquery.form.wizard.js"></script>
+    <script type="text/javascript" src="/js/plugins/forms/jquery.form.js"></script>
+
+    <script type="text/javascript" src="/js/globalize/globalize.js"></script>
+    <script type="text/javascript" src="/js/globalize/globalize.culture.de-DE.js"></script>
+    <script type="text/javascript" src="/js/globalize/globalize.culture.ja-JP.js"></script>
+    <script type="text/javascript" src="/js/plugins/tables/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="/js/files/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/js/view/plugin/other/redisStateClt.js"></script>
+    <script type="text/javascript" src="/js/view/visitCnt.js"></script>
+</head>
+
+
+
+<style>
+    .text-right {
+        text-align: right;
+    }
+
+    #graph_dialog {
+        width: 100%;
+        height: 100%;
+        display: none;
+        opacity: 1;
+    }
+
+    #graph_dialog_header {
+        position: absolute;
+        width: 100%;
+        height: 2.6em;
+        left: 0%;
+        top: 15%;
+        margin-top: -2.6em;
+        z-index: 1002;
+        font-size: 1.2em;
+    }
+
+    #graph_dialog_content {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0%;
+        top: 15%;
+        max-height: 350px;
+        background-color: #fff;
+        z-index: 1002;
+        padding-top: -4em;
+        overflow: hidden;
+    }
+
+    #graph_dialog_content table {
+        margin-top: 2.5em;
+    }
+
+    #graph_dialog_bg {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0%;
+        top: 0%;
+        z-index: 1001;
+        opacity: 0.8;
+        background-color: #fff;
+    }
+
+
+    #detail_dialog {
+        width: 100%;
+        height: 100%;
+        display: none;
+        opacity: 1;
+    }
+
+    #detail_dialog_header {
+        position: absolute;
+        width: 100%;
+        height: 2.6em;
+        left: 0%;
+        top: 15%;
+        margin-top: -2.6em;
+        z-index: 1002;
+        font-size: 1.2em;
+    }
+
+    #detail_dialog_content {
+        position: absolute;
+        width: 100%;
+        height: 120%;
+        left: 0%;
+        top: 15%;
+        max-height: 350px;
+        background-color: #fff;
+        z-index: 1002;
+        padding-top: -4em;
+        overflow: hidden;
+    }
+
+    #detail_dialog_content table {
+        margin-top: 2.5em;
+    }
+
+    #detail_dialog_bg {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0%;
+        top: 0%;
+        z-index: 1001;
+        opacity: 0.8;
+        background-color: #fff;
+    }
+
+</style>
+
+<body class="no-background">
+
+<!-- Fixed top -->
+<div>
+    <div id="top">
+        <div class="fixed">
+            <a href="/index.html" title="" class="logo" style="font-size: 24px;color:white"><img src="/img/logo.png" alt="" /></a>
+            <ul class="top-menu">
+
+            </ul>
+        </div>
+    </div>
+                <!-- Content wrapper -->
+                <div class="wrapper">
+
+
+                    <h5 class="widget-name"></h5>
+
+                    <input type="hidden" name="queryUrl" value="<%= queryUrl %>"/>
+                    <input type="hidden" name="displayLength" value="<%= displayLength %>"/>
+                    <div class="widget">
+                        <div class="navbar">
+                            <div class="navbar-inner">
+                                <h6><%= headTile %></h6>
+                                <div class="nav pull-right">
+                                    <a href="#" class="dropdown-toggle navbar-icon" data-toggle="dropdown"><i class="icon-cog"></i></a>
+                                    <ul class="dropdown-menu pull-right">
+                                        <li><a href="javascript:maintainHost(null,1);"><i class="icon-plus"></i>新增监控主机</a></li>
+                                        <li><a href="javascript:ctrolAjax('0');"><i class="icon-plus"></i>30秒刷新一次</a></li>
+                                        <li><a href="javascript:ctrolAjax('1');"><i class="icon-plus"></i>60秒刷新一次</a></li>
+                                        <li><a href="javascript:ctrolAjax('2');"><i class="icon-plus"></i>停止刷新</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="table-overflow">
+                            <table class="table table-striped table-bordered table-hover" id="data-table">
+                                <thead>
+                                    <tr>
+                                        <% titles.forEach(function(title){ %>
+                                        <th><%= title %></th>
+                                        <% }) %>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div id="graph_dialog">
+                        <div id="graph_dialog_header" class="navbar">
+                            <div class="navbar-inner">
+                                <h6 id="graph_dialog_content_title">Title</h6>
+                                <ul class="navbar-icons">
+                                    <li>
+                                        <a class="tip" title="最大化">
+                                            <i class="ico-resize-full" id="graph_dialog_header_max"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="tip" title="关闭">
+                                            <i class="ico-remove" id="graph_dialog_header_close"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div id="graph_dialog_content" class="well body">
+                            <div class="graph-standard" id="redisStateGraph"></div>
+                        </div>
+
+                        <div id="graph_dialog_bg"></div>
+                    </div>
+
+                    <div id="detail_dialog">
+
+                        <div id="detail_dialog_header" class="navbar">
+                            <div class="navbar-inner">
+                                <h6 id="detail_dialog_content_title">主机信息修改</h6>
+                                <ul class="navbar-icons">
+                                    <li>
+                                        <a class="tip" title="关闭">
+                                            <i class="ico-remove" id="detail_dialog_header_close"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div id="detail_dialog_content" class="well body">
+                            <form action="" id="validate" class="form-horizontal" method="post" enctype="multipart/form-data">
+                                <fieldset>
+                                    <div class="widget">
+                                        <div class="well row-fluid">
+                                            <div class="control-group">
+                                                <label class="control-label align-right"></label>
+                                                <label class="control-label align-center">主机IP： </label>
+                                                <div class="controls align-left">
+                                                    <input type="text" class="validate[required] span4"  disabled="disabled" id="hostIp"  value = ""> <span class="text-error">*</span>
+                                                </div>
+                                            </div>
+
+                                            <div class="control-group">
+                                                <label class="control-label align-right"></label>
+                                                <label class="control-label align-center">业务范围： </label>
+                                                <div class="controls align-left">
+                                                    <input type="text" class="validate[required] span4" id="hostInfo" id="req" value = "">
+                                                </div>
+
+                                            </div>
+                                            <div class="control-group" id ="monitorTypeV">
+                                                <label class="control-label align-right"></label>
+                                                <label class="control-label align-center">监控环境(product/develop)： </label>
+                                                <div class="controls align-left">
+                                                    <input type="text" class="validate[required,custom[onlyLetterNumber]] span4" id="monitorType"  value = "">
+                                                </div>
+                                            </div>
+
+                                            <div class="control-group" id="modHost">
+                                                <div class="form-actions align-center">
+                                                    <button type="button" class="btn btn-info"  onclick="modifyHostInfo(3)">修改信息</button>
+                                                    <button type="button" class="btn btn-info" onclick="modifyHostInfo(2)">删除主机</button>
+                                                </div>
+                                            </div>
+                                            <div class="control-group" id="addHost">
+                                                <div class="form-actions align-center">
+                                                    <button type="button" class="btn btn-info" onclick="modifyHostInfo(1)">添加主机</button>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </form>
+
+
+                        </div>
+
+                        <div id="detail_dialog_bg"></div>
+                    </div>
+
+
+
+                </div>
+                <!-- /content wrapper -->
+    <!-- Footer -->
+    </div>
+    &nbsp;
+    <div id="footer">
+        <div class="copyrights">&copy;  Asiainfo 2014.</div>
+        <ul class="footer-links">
+            <li><a href="#" title="0.1.0"><i class="icon-cogs"></i>Version: 0.1.0</a></li>
+            <li><a href="mailto:tangzhi@asiainfo-linkage.com?subject=关于LAP的Bug" title=""><i class="icon-screenshot"></i>反馈Bug</a></li>
+        </ul>
+    </div>
+<!-- /footer -->
+
+</body>
+</html>

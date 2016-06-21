@@ -1,0 +1,25 @@
+<link href="/css/jquery-ui-1.8.2.custom.css" rel="stylesheet" type="text/css"/>
+
+
+<div class="wrapper">
+    <!-- Content head -->
+    <% include ../../includes/contentHead.html %>
+    <!-- /Content head -->
+</div>
+
+<script type="text/javascript" src="/js/view/plugin/practicalMonitor/clerkOverAvgListClt.js"></script>
+<div class="wrapper">
+    <input id="date" type="hidden" value="<%= date %>"/>
+    <input id="chartList" type="hidden" value="<%= chartList %>"/>
+    <input id="business" type="hidden" value="<%= business %>"/>
+    <div class="navbar">
+        <div class="navbar-inner"><h6>超出平均耗时员工清单</h6>
+        </div>
+    </div>
+    <label>开户平均临柜时间：</label>
+        <table id="clerkOverAvgList" class="table table-striped table-bordered table-checks media-table">
+            <thead></thead>
+            <tbody></tbody>
+        </table>
+</div>
+<!-- /content wrapper -->

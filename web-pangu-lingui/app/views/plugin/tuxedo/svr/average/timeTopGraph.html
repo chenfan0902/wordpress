@@ -1,0 +1,44 @@
+<script type="text/javascript" src="/js/view/plugin/tuxedo/svr/average/timeTopGraphClt.js"></script>
+<style>
+    #placeholder-day{
+        height: 400px;
+    }
+</style>
+
+<div class="wrapper">
+    <!-- Content head -->
+    <% include ../../../../includes/contentHead.html %>
+    <!-- /Content head -->
+</div>
+
+
+<h5 class="widget-name"></h5>
+<!-- Content wrapper -->
+<div class="widget">
+    <input id="value" type="hidden" value="<%= date %>"/>
+    <input id="chartList" type="hidden" value="<%= chartList %>"/>
+    <input id="host" type="hidden" value="<%= host %>"/>
+    <input id="SVRNAME" type="hidden" value="<%= SVRNAME %>"/>
+    <div class="navbar">
+        <div class="navbar-inner">
+            <h6 class=""><i class="icon-align-justify"></i><%= headTitle %>(<%= host %> - <%= SVRNAME %>)</h6>
+            <ul class="navbar-icons">
+            <li>
+                <a class="tip" title="最大化">
+                    <i class="ico-resize-full" id="qa_dialog_header_max"></i>
+                </a>
+            </li>
+        </ul>
+        </div>
+    </div>
+
+    <div class="row-fluid">
+        <div class="widget">
+            <div class="well body">
+                <div class="graph-standard" id="placeholder-day"></div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- /content wrapper -->

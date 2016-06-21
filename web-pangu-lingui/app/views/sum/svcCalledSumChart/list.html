@@ -1,0 +1,70 @@
+
+	<script type="text/javascript" src="/js/view/sum/list.js"></script>	
+	<script type="text/javascript" src="/js/view/sum/chart.js"></script>
+	<script type="text/javascript" src="/js/view/sum/pie.js"></script>
+
+
+		    <!-- Content wrapper -->
+		    <div class="wrapper">
+
+			     <!-- Content head -->
+			        <% include ../../includes/contentHead.html %>	
+			    <!-- /Content head -->
+
+			    
+		    
+                <h5 class="widget-name">服务统计</h5>
+				<div class="row-fluid">
+
+					<div class="span4">
+
+						<% var chartAreaIdx = 0 %>
+
+						<% var item = all['TuxStateCalledSumByTimeByHour1'],
+							mode='TuxState', type='CalledSumByTimeByHour',subtype='1';
+							item.color='#46bb00' %>
+						<% include ../../includes/widget/chart-area.html %>	
+
+						<% var item = all['TuxStateCalledSumByTimeAtDay1'], 
+							mode='TuxState', type='CalledSumByTime',subtype='AtDay1';
+							item.color='#46bb00' %>
+						<% include ../../includes/widget/chart-area.html %>
+
+					</div>
+
+					<div class="span4">
+
+						<% var item = all['TuxStateFailedSumByTimeByHour1'],
+							mode='TuxState', type='FailedSumByTime',subtype='1';
+							item.color='#f1553c' %>
+						<% include ../../includes/widget/chart-area.html %>	
+
+						<% var item = all['TuxStateFailedSumByTimeAtDay1'], 
+							mode='TuxState', type='FailedSumByTime',subtype='AtDay1';
+							item.color='#f1553c' %>
+						<% include ../../includes/widget/chart-area.html %>
+
+					</div>
+
+					<div class="span4">
+
+						<div class="widget">
+			            	<div class="navbar">
+			                	<div class="navbar-inner">
+			                    	<h6>成功率(日)</h6>
+			                    </div>
+			                </div>
+			                <div class="well body">
+								<div class="graph-standard" id="chart-pie-1"></div>
+								<div style="display:none" id="chart-pie-data1">[{"label":"成功总数", "data": <%= all['TuxStateCalledSumByTimeByHour1'].count - all['TuxStateFailedSumByTimeByHour1'].count  %>},{"label":"<%= all['TuxStateFailedSumByTimeByHour1'].name %>", "data":<%= all['TuxStateFailedSumByTimeByHour1'].count %>}]</div>
+			                </div>
+			            </div>		
+
+					</div>
+
+				</div>
+				<!-- /排名 -->
+
+
+		    </div>
+		    <!-- /content wrapper -->

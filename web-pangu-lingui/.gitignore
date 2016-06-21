@@ -1,0 +1,13 @@
+.DS_Store
+*.swp
+node_modules
+*.bak
+.idea/
+.buildpath
+.project
+npm-debug.log
+*.tar.gz
+*.tar
+.bak/
+*.out
+logs

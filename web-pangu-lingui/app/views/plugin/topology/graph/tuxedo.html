@@ -1,0 +1,183 @@
+<link href="/css/ntg/tuxedo.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="/js/view/plugin/hostRegionInfo.js"></script>
+<script type="text/javascript" src="/js/files/d3.v3.min.js"></script>
+<script type="text/javascript" src="/js/view/plugin/topology/graph/tuxedoClt.js"></script>
+<div class="wrapper">
+    <!-- Content head -->
+    <% include ../../../includes/contentHead.html %>
+    <!-- /Content head -->
+</div>
+
+<div class="widget">
+    <input id="value" type="hidden" value="<%= value %>"/>
+    <input id="chartList" type="hidden" value="<%= chartList %>"/>
+    <input id="lcuQueryUrl" type="hidden" value="<%= lcuQueryUrl %>"/>
+    <input id="warnQueryUrl" type="hidden" value="<%= warnQueryUrl %>"/>
+    <div id="cConfig" style="display: none"><%= cConfig %></div>
+
+    <div class="navbar">
+        <div class="navbar-inner">
+            <h6><%= title%></h6><%var pageType = 'tuxedo'%>
+            <!--<div class="radio-group">-->
+                <!--<div class="flow-radio" disabled>-->
+                    <!--<label class="btn five-minute" disabled>-->
+                        <!--<input type="radio" class="<%=pageType%>-type" name="<%=pageType%>-radio" disabled style="display: none" value="five-minute">-->
+                        <!--查看最近五分钟-->
+                    <!--</label>-->
+                <!--</div>-->
+                <!--<div class="flow-radio">-->
+                    <!--<label class="btn whole-day active">-->
+                        <!--<input type="radio" class="<%=pageType%>-type" name="<%=pageType%>-radio" style="display: none" value="whole-day" checked>-->
+                        <!--查看当天-->
+                    <!--</label>-->
+                <!--</div>-->
+            <!--</div>-->
+        </div>
+    </div>
+
+    <div class="ntg-group">
+        <div class="ntg-side-left">
+            <div class="ntg-type">
+                <img src="/img/logo-change.png"><span class="ntg-type-name">业务分类</span>
+            </div>
+            <div class="ntg-items"><%for(var i=0;i<tradeType.length;i++){%>
+                <div class="ntg-content">
+                    <div class="ntg-content-left">
+                        <img src="/img/tuxedo/<%=tradeType[i].key%>.png" class="ntg-side-img">
+                    </div>
+                    <div class="ntg-content-right">
+                        <div class="ntg-top">
+                            <div class="ntg-name"><%=tradeType[i].name%></div>
+                        </div>
+                        <div class="ntg-line"></div>
+                        <div class="ntg-bottom">
+                            <ul class="ntg-list <%= tradeType[i].key%>"><%for(var j=0;j<tradeNorm.length;j++){%>
+                                <li class="ntg-item">
+                                    <div class="ntg-style"></div>
+                                    <div class="ntg-field"><%=tradeNorm[j][0]%></div>
+                                    <div class="ntg-progress">
+                                        <div class="progress <%=tradeNorm[j][1]%>">
+                                            <div class="bar" style="width: 60%; min-width: 4em;">
+                                                <span class="progress-value">0</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <span class="ntg-value">0.0%</span>
+                                </li>
+                                <%}%></ul>
+                        </div>
+                    </div>
+                </div><%}%>
+            </div>
+            <button type="button" class="btn ntg-down"></button>
+        </div>
+        <div class="ntg-side-middle">
+            <div class="ntg-balloon-group">
+                <div class="ntg-balloon-trade">
+                    <div class="ntg-balloon-name">业务分类:</div><%for(var i=0;i<tradeType.length;i++){%>
+                    <div class="ntg-balloon-item balloon-<%=tradeType[i].key%>" data-name="<%=tradeType[i].name%>"></div><%}%>
+                </div>
+                <div class="ntg-balloon-region">
+                    <div class="ntg-balloon-name">主机分类:</div><%for(var i=0;i<regionType.length;i++){%>
+                    <div class="ntg-balloon-item balloon-<%=regionType[i].key%>" data-name="<%=regionType[i].name%>"></div><%}%>
+                </div>
+            </div>
+            <div id="topology" class="ntg-graph">
+                <div class="msgWarningInfo">
+                    <table border="0" align="center" cellpadding="1" cellspacing="1" cellspace="0">
+                        <tr>
+                            <td valign="top" bgcolor="#999999">
+                                <!-- 特别注意，下面的图片总宽度必须大于上面定义的demo的宽度，如上面demo的宽度为500px,则下面图片总宽度必须大于500,否则会出现些问题！ -->
+                                <table border="0" cellspacing="0" cellpadding="0">
+                                    <tr align="center" class="msg-list">
+                                        <td class="msg-null">
+                                                <div class="msg-item"></div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="ntg-side-right">
+            <div class="ntg-type">
+                <img src="/img/logo-change.png"><span class="ntg-type-name">主机分类</span>
+            </div>
+            <div class="ntg-items"><%for(var i=0;i<regionType.length;i++){%>
+                <div class="ntg-content">
+                    <div class="ntg-top">
+                        <div class="ntg-title"><%= regionType[i].name%>
+                            <span class="ntg-num"><%=i+1%></span>
+                        </div>
+                    </div>
+                    <div class="ntg-line"></div>
+                    <div class="ntg-bottom">
+                        <ul class="ntg-list <%= regionType[i].key%>"><%for(var j=0;j<regionNorm.length;j++){%>
+                            <li class="ntg-item">
+                                <div class="ntg-style"></div>
+                                <div class="ntg-field"><%=regionNorm[j][0]%></div>
+                                <div class="ntg-progress">
+                                    <div class="progress <%=regionNorm[j][1]%>">
+                                        <div class="bar" style="width: 60%; min-width: 4em;">
+                                            <span class="progress-value">0</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <span class="ntg-value">0.0%</span>
+                            </li>
+                            <%}%></ul>
+                    </div>
+                </div><%}%>
+            </div>
+            <button type="button" class="btn ntg-down"></button>
+        </div>
+    </div>
+
+    <div id="ntg_dialog">
+        <div class="widget">
+            <div id='ntg_dialog_header' class="navbar">
+                <div class="navbar-inner">
+                    <h6 id="ntg_dialog_content_title">Title</h6>
+                    <ul class="navbar-icons">
+                        <li>
+                            <a class="tip" title="关闭">
+                                <i class="ico-remove" id="ntg_dialog_header_close"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="tabbable"><!-- default tabs -->
+                <ul class="nav nav-tabs">
+                    <li class="active" id="tab-warn"><a href="#tab4" data-toggle="tab"><i class="icon-warning-sign"></i>告警历史清单</a></li>
+                    <li class="" id="tab-lcu"><a href="#ntg_dialog_content" data-toggle="tab"><i class="icon-list"></i>超时流程分析</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane active" id="tab4">
+                        <table class="table table-striped table-bordered table-hover" id="data-table-warning" style="width: 100%">
+                            <thead>
+                            <tr><% warnTableNames.forEach(function(item){ %>
+                                <th><%= item %></th><% }) %>
+                            </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                    <div id="ntg_dialog_content" class="tab-pane active">
+                        <table class="table table-striped table-bordered table-hover" id="data-table-lcu" style="width: 100%">
+                            <thead>
+                            <tr><% lcuTableNames.forEach(function(item){ %>
+                                <th><%= item %></th><% }) %>
+                            </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

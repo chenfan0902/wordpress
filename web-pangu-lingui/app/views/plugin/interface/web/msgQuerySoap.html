@@ -1,0 +1,175 @@
+<script type="text/javascript" src="/js/view/plugin/interface/web/msgQuerySoapClt.js"></script>
+<style>
+    #_total > .head > li{
+        background: #5B9BB4;
+    }
+    .detail-err-href {
+        color: white;
+        text-decoration: underline
+    }
+    .detail-err-href:hover {
+        color: black;
+        text-decoration: underline
+    }
+</style>
+
+<div class="wrapper">
+    <!-- Content head -->
+    <% include ../../../includes/contentHead.html %>
+    <!-- /Content head -->
+</div>
+
+<div class="widget num-err-flag">
+    <input id="value" type="hidden" value="<%= value %>"/>
+    <div id="data" style="display: none"><%=JSON.stringify(data||'')%></div>
+    <div class="navbar"><div class="navbar-inner"><h6><%= title%></h6></div></div>
+    <div class="row-fluid well">
+        <div class="control-group form-horizontal">
+            <div class="control-group">
+                <div class="span6">
+                    <label class="control-label">TRANS_IDO</label>
+                    <div class="controls rtl-inputs"><input type="text" id="transIdo" readonly value="<%= TRANS_IDO%>" class="span12"></div>
+                </div>
+                <div class="span6">
+                    <label class="control-label">报文类型</label>
+                    <div class="controls rtl-inputs"><input type="text" readonly value="soap" class="span12"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row-fluid widget">
+    <div class="navbar"><div class="navbar-inner"><h6>报文HEAD</h6></div></div>
+    <div class="well form-horizontal">
+        <div class="control-group">
+            <div class="span4">
+                <label class="control-label">SERVICE_NAME</label>
+                <div class="controls rtl-inputs"><input type="text" readonly value="<%= data.SERVICE_NAME||'lost..'%>" id="serviceName" class="span10"></div>
+            </div>
+            <div class="span4">
+                <label class="control-label">OPERATE_NAME</label>
+                <div class="controls rtl-inputs"><input type="text" readonly value="<%= data.OPERATE_NAME||'lost..'%>" id="operateName" class="span10"></div>
+            </div>
+            <div class="span4">
+                <label class="control-label">PROCESS_TIME</label>
+                <div class="controls rtl-inputs"><input type="text" readonly value="<%= data.PROCESS_TIME||'lost..'%>" id="processTime" class="span10"></div>
+            </div>
+        </div>
+        <div class="control-group">
+            <div class="span4">
+                <label class="control-label">SYS_ID</label>
+                <div class="controls rtl-inputs"><input type="text" readonly value="<%= data.SYS_ID||'lost..'%>" id="sysID" class="span10"></div>
+            </div>
+            <div class="span4">
+                <label class="control-label">主机IP</label>
+                <div class="controls rtl-inputs"><input type="text" readonly value="<%= data.host||'lost..'%>" id="host" class="span10"></div>
+            </div>
+            <div class="span4">
+                <label class="control-label">PROC_ID</label>
+                <div class="controls rtl-inputs"><input type="text" readonly value="<%= data.PROC_ID||'lost..'%>" id="procId" class="span10"></div>
+            </div>
+        </div>
+        <div class="control-group">
+            <div class="span4">
+                <label class="control-label">ROUTE_TYPE</label>
+                <div class="controls rtl-inputs"><input type="text" readonly value="<%= data.ROUTE_TYPE||'lost..'%>" id="routeType" class="span10"></div>
+            </div>
+            <div class="span4">
+                <label class="control-label">ROUTE_VALUE</label>
+                <div class="controls rtl-inputs"><input type="text" readonly value="<%= data.ROUTE_VALUE||'lost..'%>" id="routeValue" class="span10"></div>
+            </div>
+            <div class="span4">
+                <label class="control-label">OPER_ID</label>
+                <div class="controls rtl-inputs"><input type="text" readonly value="<%= data.OPER_ID||'lost..'%>" id="operId" class="span10"></div>
+            </div>
+        </div>
+        <div class="control-group">
+            <div class="span6">
+                <label class="control-label">CITY_CODE</label>
+                <div class="controls rtl-inputs"><input type="text" readonly value="<%= data.CITY_CODE||'lost..'%>" id="cityCode" class="span10"></div>
+            </div>
+            <div class="span6">
+                <label class="control-label">EPARCHY_CODE</label>
+                <div class="controls rtl-inputs"><input type="text" readonly value="<%= data.EPARCHY_CODE||'lost..'%>" id="eparchyCode" class="span10"></div>
+            </div>
+        </div>
+        <div class="control-group">
+            <div class="span4">
+                <label class="control-label">CHANNEL_ID</label>
+                <div class="controls rtl-inputs"><input type="text" readonly value="<%= data.CHANNEL_ID||'lost..'%>" id="channelId" class="span10"></div>
+            </div>
+            <div class="span4">
+                <label class="control-label">CHANNEL_TYPE</label>
+                <div class="controls rtl-inputs"><input type="text" readonly value="<%= data.CHANNEL_TYPE||'lost..'%>" id="channelType" class="span10"></div>
+            </div>
+            <div class="span4">
+                <label class="control-label">TRANSFER_TIME</label>
+                <div class="controls rtl-inputs"><input type="text" readonly value="<%= data.TRANSFER_TIME||'lost..'%>" id="transTime" class="span10"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row-fluid">
+    <!-- Column -->
+    <div class="span6">
+
+        <!-- Selects, dropdowns -->
+        <div class="widget">
+            <div class="navbar"><div class="navbar-inner"><h6>请求报文</h6></div></div>
+            <div class="well">
+                <div class="control-group form-horizontal">
+                    <label class="control-label">REQ_TIME</label>
+                    <div class="controls"><input type="text" readonly id="reqTime" value="<%= data.REQ_TIME||'lost..'%>" class="span12"></div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">完整报文:</label>
+                    <div class="controls">
+                        <textarea rows="37" cols="5" readonly id="reqMsg" name="textarea" class="span12" style="margin-top: 0px; margin-bottom: 0px;"><%= data.REQ_MSG||'lost..'%></textarea>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- /selects, dropdowns -->
+
+    </div>
+    <!-- /column -->
+
+    <!-- Column -->
+    <div class="span6">
+
+        <!-- Checkboxes, radios -->
+        <div class="widget">
+            <div class="navbar"><div class="navbar-inner"><h6>应答报文</h6></div></div>
+            <div class="row-fluid well">
+                <div class="control-group form-horizontal">
+                    <label class="control-label">RSP_TIME</label>
+                    <div class="controls"><input type="text" readonly value="<%= data.RSP_TIME||'lost..'%>" id="rspTime" class="span12"></div>
+                </div>
+                <div class="control-group">
+                    <div class="span6">
+                        <label class="control-label">RSP_TYPE</label>
+                        <div class="controls"><input type="text" readonly id="rspType" value="<%= data.RSP_TYPE||'lost..'%>" class="span12"></div>
+                    </div>
+                    <div class="span6">
+                        <label class="control-label">RSP_CODE</label>
+                        <div class="controls"><input type="text" readonly id="rspCode" value="<%= data.RSP_CODE||'lost..'%>" class="span12"></div>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">RSP_DESC</label>
+                    <div class="controls">
+                        <textarea rows="2" cols="5" id="rspDesc" readonly name="textarea" class="span12" style="margin-top: 0px; margin-bottom: 0px;"><%= data.RSP_DESC||'lost..'%></textarea>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">完整报文:</label>
+                    <div class="controls">
+                        <textarea rows="25" cols="5" id="rspMsg" readonly name="textarea" class="span12" style="margin-top: 0px; margin-bottom: 0px;"><%= data.RSP_MSG||'lost..'%></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /column -->
+    </div>
+</div>

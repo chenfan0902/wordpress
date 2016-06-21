@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<% include ../includes/head.html %>	
+
+<body>
+
+	
+	<% include ../includes/fixedtop.html %>	
+
+
+	<!-- Content container -->
+	<div id="container">
+
+		<% include ../includes/sidebar.html %>	
+
+		<!-- Content -->
+		<div id="content">
+
+		    <!-- Content wrapper -->
+		    <div class="wrapper">
+
+			    <!-- Content head -->
+			        <% include ../includes/contentHead.html %>	
+			    <!-- /Content head -->
+
+			    
+		    
+                <h5 class="widget-name"></h5>
+
+				<div class="row-fluid">
+
+					<div class="span4">
+
+						<% var tabIdx = 0, mode='TuxState' %>
+						<% var item = all['TuxStateTimeOutTop'], type='TimeOutTop',subtype='' %>
+						<% include ../includes/widget/top.html %>		
+
+						<% var item = all['TuxStateCalledSumByLcu'], type='CalledSumByLcu',subtype='' %>
+						<% include ../includes/widget/top.html %>		
+
+						<% var item = all['TuxStateFailedSumByLcu'], type='FailedSumByLcu',subtype='' %>
+						<% include ../includes/widget/top.html %>		
+					</div>
+
+					<div class="span4">
+						
+						<% var item = all['TuxStateCalledSumBySvr'], type='CalledSumBySvr', subtype='' %>
+						<% include ../includes/widget/top.html %>	
+						
+						<% var item = all['TuxStateFailedSumBySvr'], type='FailedSumBySvr',subtype='' %>
+						<% include ../includes/widget/top.html %>	
+
+					</div>
+
+					<div class="span4">
+
+						<% var item = all['TuxStateAllTimeByLcu'], type='AllTime',subtype='ByLcu' %>
+						<% include ../includes/widget/top.html %>	
+
+						<% var item = all['TuxStateAllTimeBySvr'], type='AllTime',subtype='BySvr' %>
+						<% include ../includes/widget/top.html %>	
+
+					</div>
+
+				</div>
+				<!-- /排名 -->
+
+
+		    </div>
+		    <!-- /content wrapper -->
+
+		</div>
+		<!-- /content -->
+
+	</div>
+	<!-- /content container -->
+
+
+	<% include ../includes/foot.html %>	
+
+</body>
+</html>

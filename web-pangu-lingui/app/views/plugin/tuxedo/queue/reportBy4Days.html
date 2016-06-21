@@ -1,0 +1,107 @@
+<link href="/css/popModal.min.css" rel="stylesheet" type="text/css"/>
+
+<style>
+    .text-right {
+        text-align: right;
+    }
+
+    #qra_dialog {
+        width: 100%;
+        height: 100%;
+        display: none;
+        opacity: 1;
+    }
+
+    #qra_dialog_header {
+        position: absolute;
+        width: 60%;
+        height: 2.6em;
+        left: 20%;
+        top: 15%;
+        margin-top: -2.6em;
+        z-index: 1002;
+        font-size: 1.2em;
+    }
+
+    #qra_dialog_content {
+        position: absolute;
+        width: 60%;
+        height: 50%;
+        left: 20%;
+        top: 15%;
+        max-height: 350px;
+        background-color: #fff;
+        z-index: 1002;
+        padding-top: -4em;
+        overflow: hidden;
+    }
+
+    #qra_dialog_content table {
+        margin-top: 2.5em;
+    }
+
+    #qra_dialog_bg {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0%;
+        top: 0%;
+        z-index: 1001;
+        opacity: 0.8;
+        background-color: #fff;
+    }
+
+</style>
+
+<script type="text/javascript" src="/js/popModal.min.js"></script>
+<script type="text/javascript" src="/js/view/plugin/tuxedo/queue/report4DaysClt.js"></script>
+
+<div class="wrapper">
+    <!-- Content head -->
+    <% include ../../../includes/contentHead.html %>
+    <!-- /Content head -->
+</div>
+
+<div class="widget">
+    <input id="value" type="hidden" value="<%= value %>"/>
+
+    <div class="navbar">
+        <div class="navbar-inner">
+            <h6>队列监控分析</h6>
+            <ul class="navbar-icons" style="margin-top: 8px">
+                <li><a href="#" class="tip" title="选择显示主机地址">
+                    <select id="qr_serv" style="vertical-align: bottom; height: 2em; margin-top: -1em;">
+                        <% for (var i = 0; i < hosts.length; i++) { %>
+                        <option><%= hosts[i] %></option>
+                        <% } %>
+                    </select>
+                </a></li>
+            </ul>
+            <!--<div class="nav pull-right">
+                <a href="#" class="dropdown-toggle navbar-icon" data-toggle="dropdown">
+                    <i class="icon-sitemap"></i>
+                </a>
+                <ul id="qa_serv" class="dropdown-menu pull-right">
+                    <% for (var j = 0; j < hosts.length; j++) { %>
+                    <li><a><i class="icon-hand-right"></i><%= hosts[j] %></a></li>
+                    <% } %>
+                </ul>
+            </div>-->
+        </div>
+    </div>
+
+    <div class="table-overflow">
+        <table id="qra_table" class="table table-striped table-hover">
+            <thead>
+            <tr>
+                <% for (var i = 0; i < tabColNames.length; i++) { %>
+                <th style="text-align: center"><%= tabColNames[i] %></th>
+                <% } %>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+
+</div>

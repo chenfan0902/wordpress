@@ -1,0 +1,63 @@
+<script type="text/javascript" src="/js/view/plugin/common/detail/query/realtimeClt.js"></script>
+		    <!-- Content wrapper -->
+		    <div class="wrapper">
+
+
+                <!-- Content head -->
+			        <% include ../../../../includes/contentHead.html %>
+			    <!-- /Content head -->
+			    
+                <h5 class="widget-name"></h5>
+
+                <input type="hidden" name="queryUrl" value="<%= queryUrl %>"/>
+                <input type="hidden" name="value" value="<%= value %>"/>
+                <input type="hidden" name="chartList" value="<%= chartList %>"/>
+                <input type="hidden" name="displayLength" value="<%= displayLength %>"/>
+				<div class="widget">
+                	<div class="navbar">
+                    	<div class="navbar-inner">
+                        	<h6><%= headTile %></h6>
+                            <% if (chartList === 'realTimeWarningChart'){ %><ul class="navbar-icons" style="margin-top: 8px">
+                                <% if( hosts.length > 0) { %>
+                                <li><a href="#" class="tip" title="选择显示主机地址">
+                                    <select id="rt_host_sl" style="vertical-align: bottom; height: 2em; margin-top: -1em;">
+                                        <option value="*">全部显示</option>
+                                        <% for (var i = 0; i < hosts.length; i++) { %>
+                                        <%if(hosts[i].indexOf(':')!=-1){%> <option disabled><%= hosts[i] %></option><%}else{%>
+                                        <option value="<%= hosts[i]%>"><%= hosts[i] %></option><%}%><% } %>
+                                    </select>
+                                </a></li>
+                                <% } %>
+                            </ul>
+                            <ul class="navbar-icons" style="margin-top: 8px">
+                                <% if( hosts.length > 0) { %>
+                                <li><a href="#" class="tip" title="选择告警类型">
+                                    <select id="rt_type_sl" style="vertical-align: bottom; height: 2em; margin-top: -1em;">
+                                        <option value="*">全部显示</option>
+                                        <option value="lcu">流程</option>
+                                        <option value="svr">队列</option>
+                                    </select>
+                                </a></li>
+                                <% } %>
+                            </ul>
+                        </div><%}%>
+                    </div>
+                    <div class="table-overflow">
+                        <table class="table table-striped table-bordered table-hover" id="data-table">
+                            <thead>
+                                <tr>
+									<% titles.forEach(function(title){ %>
+									<th><%= title %></th>
+									<% }) %>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+			
+
+		    </div>
+		    <!-- /content wrapper -->

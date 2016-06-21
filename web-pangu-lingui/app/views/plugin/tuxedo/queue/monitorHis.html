@@ -1,0 +1,96 @@
+<link href="/css/jqx.base.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/js/view/plugin//tuxedo/queue/monitorHisClt.js"></script>
+<script type="text/javascript" src="/js/view/meter/jqxcore.js"></script>
+<script type="text/javascript" src="/js/view/meter/jqxdata.js"></script>
+<script type="text/javascript" src="/js/view/meter/jqxchart.js"></script>
+
+<style>
+    #queue_monitor {
+        height: 400px;
+    }
+</style>
+
+<div class="wrapper">
+    <!-- Content head -->
+    <% include ../../../includes/contentHead.html %>
+    <!-- /Content head -->
+</div>
+
+<div class="widget">
+    <input id="value" type="hidden" value="<%= value %>"/>
+    <div class="navbar">
+        <div class="navbar-inner">
+            <h6>队列监控</h6>
+            <ul class="navbar-icons">
+                <li><a href="#" class="tip" title="选择显示服务队列">
+                    <select id="mh_serve_sel" style="vertical-align: bottom; height: 2em; margin-top: -1em;">
+                        <option>全部显示</option>
+                    </select>
+                </a></li>
+                <li><a href="#" class="tip" title="选择显示主机地址">
+                    <select id="mh_hosts_sel" style="vertical-align: bottom; height: 2em; margin-top: -1em;">
+                        <% for (var i = 0; i < hosts.length; i++) { %>
+                        <%if(hosts[i].indexOf(':')!=-1){%> <option disabled><%= hosts[i] %></option><%}else{%>
+                        <option><%= hosts[i] %></option><%}%><% } %>
+                    </select>
+                </a></li>
+                <li><a href="#" class="tip" title="显示两个小时结果">
+                    <select id="mh_hours_sel" style="vertical-align: bottom; height: 2em; margin-top: -1em; width: 3.5em;">
+                        <option>0</option>
+                        <option>2</option>
+                        <option>4</option>
+                        <option>6</option>
+                        <option>8</option>
+                        <option>10</option>
+                        <option>12</option>
+                        <option>14</option>
+                        <option>16</option>
+                        <option>18</option>
+                        <option>20</option>
+                        <option>22</option>
+                    </select>
+                </a></li>
+                <li><a href="#" class="tip" title="全量显示"><i id="mh_show_all" class="ico-resize-full"></i></a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="well body">
+        <div class="graph-standard" id="queue_monitor"></div>
+    </div>
+
+    <!--<div class="widget">
+        <div class="navbar"><div class="navbar-inner"><h6>队列实时数据</h6></div></div>
+        <div class="table-overflow">
+            <table id="os_detail" class="table table-striped">
+                <thead>
+                <tr>
+                    <th>队列名称</th>
+                    <th>订单标识</th>
+                    <th>订单类型</th>
+                    <th>积压数量</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Queue1</td>
+                    <td>缴费开机</td>
+                    <td>7331</td>
+                    <td>80</td>
+                </tr>
+                <tr>
+                    <td>Queue1</td>
+                    <td>欠费停机</td>
+                    <td>7332</td>
+                    <td>40</td>
+                </tr>
+                <tr>
+                    <td>Queue1</td>
+                    <td>开户</td>
+                    <td>101</td>
+                    <td>20</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>-->
+</div>

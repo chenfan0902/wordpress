@@ -1,0 +1,76 @@
+
+<!-- Sidebar -->
+		<div id="sidebar">
+
+        <!-- Datepicker -->
+         <div class="widget">
+        		<!--<h6 class="widget-name"><i class="icon-calendar"></i><strong>统计日期<strong></h6> -->
+                <div  class="inlinepicker datepicker-liquid"></div>
+                <a href="" data-pjax='#content' id="pickerDataUrl"></a>
+                <input type="hidden" id="datepicker" value="<% now = new Date()%><%= now.getFullYear()+"-"+(now.getMonth()+1)+"-"+now.getDate() %>" />
+          </div>
+           <!-- /datepicker -->
+
+	        <!-- Sidebar user -->
+	        <div class="sidebar-user widget">
+	            <ul class="user-links">
+	            	<li><a href="" title="" id ='DayCalledSum'></a></li>
+	            	<li><a href="" title="" id ='DayFailedSum'></a></li>
+	            	<li><a href="" title="" id ='DaySuccessRate'></a></li>
+	            </ul>
+	        </div>
+	        <!-- /sidebar user -->
+
+	        <div class="general-stats widget">
+		        <ul class="head">
+		        	<li><span>月-总数</span></li>
+		        	<li><span>月-异常</span></li>
+		        	<li><span>月-成功率</span></li>
+		        </ul>
+		        <ul class="body">
+		        	<li id ='MonCalledSum'></li>
+		        	<li id ='MonFailedSum'></li>
+		        	<li id ='MonSuccessRate'></li>
+		        </ul>
+		    </div>
+		    
+		    <!-- Main navigation -->
+	        <ul class="navigation widget">
+	        
+	            <li><a href="/index.html" title=""><i class="icon-home"></i>分析大厅</a></li>
+                <% if(locals.menus !== undefined){ %>
+                    <% locals.menus.forEach(function(menu){ %>
+                         <li class=""><a <% if(menu.url != undefined){ %> href="<%= menu.url %>"  data-pjax='#content' <% } %> title="" <% if(menu.list.length>0){ %> class="expand" <% if(menu.menuId != undefined){ %> id="<%= menu.menuId %>" <%} }else{ %> class="" <% } %>  ><i class=<%= menu.class %>></i><%= menu.title %>  <% if(menu.list.length>0){ %> <strong><%= menu.list.length %></strong><% } %></a>
+                             <ul>
+                                 <% menu.list.forEach(function(item){ %>
+                                 <% if(item.list != undefined && item.list.length >0){ %>
+                                 <li class=""><a <% if(item.url != undefined){ %> href="<%= item.url %>"  data-pjax='#content' <% } %> title="" <% if(item.list && item.list.length>0){ %> class="expand" <% if(item.menuId != undefined){ %> id="<%= item.menuId %>" <%} }else{ %> class="" <% } %>  ><i class=<%= item.class %>></i><%= item.title %>  <% if(item.list.length>0){ %> <i class="badge pull-right"><%= item.list.length %></i><% } %></a>
+                                     <ul>
+                                         <% item.list.forEach(function(docs){ %>
+                                            <% if(docs.menuType != undefined && docs.menuType == 'outer'){ %>
+                                                <li><a href="<%= docs.url %>" target="_blank"><%= docs.title %></a></li>
+                                            <% } else{  %>
+                                                <li><a href="<%= docs.url %>" data-pjax='#content'><%= docs.title %></a></li>
+                                            <%}%>
+                                         <% }) %>
+                                     </ul>
+                                 </li>
+                                 <% } else{ %>
+                                    <% if(item.menuType != undefined && item.menuType == 'outer'){ %>
+                                        <li><a href="<%= item.url %>" target="_blank"><%= item.title %></a></li>
+                                    <% } else{  %>
+                                        <li><a href="<%= item.url %>" data-pjax='#content'><%= item.title %></a></li>
+                                    <%}%>
+                                 <%}%>
+                                 <% }) %>
+                             </ul>
+                         </li>
+                    <% }) %>
+                 <% } %>
+            </ul>
+	        <!-- /main navigation -->
+	        
+		<!-- /sidebar -->
+
+		
+   </div>

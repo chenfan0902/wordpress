@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+##################### param #####################
+LOGIN=`whoami`
+port=${1-3000}
+intf=${2-27017}
+tux=${3-27017}
+#workspace=${5-/home/fl-web/pangu/pangu-la-web}
+
+##################### function ##################
+#cd $workspace;
+ps -elf|grep $LOGIN|grep web_|grep $port|awk '{print "kill "$4}'|sh;
+num=`ps -elf|grep $LOGIN|grep web_|grep $port|wc -l`;
+
+if [ $num -eq 0 ]; then
+    nohup node web_server.js -p $port -s $intf -t $tux &
+else
+    exit 1
+fi
